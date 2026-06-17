@@ -5,7 +5,6 @@ import {
   Menu,
   Search,
   X,
-  Box,
 } from 'lucide-react';
 
 const navLinks = [
