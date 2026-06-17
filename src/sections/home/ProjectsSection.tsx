@@ -1,0 +1,277 @@
+import { useEffect, useRef } from 'react';
+import { ArrowUpRight, Box } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const projects = [
+  {
+    category: 'Business',
+    title: 'Event Management Platform',
+    image: '/images/project-event.jpg',
+    size: 'large-left',
+  },
+  {
+    category: 'Connect',
+    title: 'Digital Marketing Campaign',
+    image: '/images/project-marketing.jpg',
+    size: 'small-right',
+  },
+  {
+    category: 'Empower',
+    title: 'Interactive Learning Platform',
+    image: '/images/project-learning.jpg',
+    size: 'small-left',
+  },
+  {
+    category: 'Support',
+    title: 'Environmental Impact Dashboard',
+    image: '/images/project-environmental.jpg',
+    size: 'large-right',
+  },
+];
+
+export default function ProjectsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const labelRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+
+  const topLeftRef = useRef<HTMLDivElement>(null);
+  const topRightRef = useRef<HTMLDivElement>(null);
+  const bottomLeftRef = useRef<HTMLDivElement>(null);
+  const bottomRightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: {
+          ease: 'power3.out',
+        },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 65%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      tl.fromTo(
+        labelRef.current,
+        {
+          y: 26,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+        }
+      )
+        .fromTo(
+          headingRef.current?.querySelectorAll('.heading-line') || [],
+          {
+            y: 45,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.12,
+          },
+          '-=0.2'
+        )
+        .fromTo(
+          [descRef.current, buttonRef.current],
+          {
+            y: 35,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.1,
+          },
+          '-=0.45'
+        )
+        .fromTo(
+          topLeftRef.current,
+          {
+            x: -85,
+            opacity: 0,
+            scale: 0.97,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.9,
+          },
+          '-=0.1'
+        )
+        .fromTo(
+          topRightRef.current,
+          {
+            x: 85,
+            opacity: 0,
+            scale: 0.97,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.9,
+          },
+          '<'
+        )
+        .fromTo(
+          bottomLeftRef.current,
+          {
+            x: -85,
+            opacity: 0,
+            scale: 0.97,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.9,
+          },
+          '-=0.42'
+        )
+        .fromTo(
+          bottomRightRef.current,
+          {
+            x: 85,
+            opacity: 0,
+            scale: 0.97,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.9,
+          },
+          '<'
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const cardRefs = [
+    topLeftRef,
+    topRightRef,
+    bottomLeftRef,
+    bottomRightRef,
+  ];
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[var(--color-base)] px-4 py-24 sm:px-6 lg:px-12 xl:px-20"
+    >
+      <div className="mx-auto max-w-[1340px]">
+        {/* Header */}
+        <div className="mb-12 grid grid-cols-1 items-end gap-8 lg:grid-cols-[1.1fr_0.75fr_0.42fr]">
+          <div>
+            <div
+              ref={labelRef}
+              className="mb-7 inline-flex items-center gap-3 rounded-[3px] border border-dashed border-[#c8d2d2] bg-transparent px-4 py-2 opacity-0"
+            >
+              <Box className="h-4 w-4 fill-[#188b88] text-[#188b88]" />
+              <span className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#071515]">
+                Proud Projects
+              </span>
+            </div>
+
+            <h2
+              ref={headingRef}
+              className="overflow-hidden text-[38px] font-normal leading-[1.12] tracking-[-0.04em] text-[#071515] sm:text-[48px] lg:text-[56px]"
+            >
+              <span className="heading-line block">
+                Breaking Boundaries,
+              </span>
+              <span className="heading-line block">
+                Building{' '}
+                <em className="not-italic text-[#188b88]">
+                  Dreams.
+                </em>
+              </span>
+            </h2>
+          </div>
+
+          <p
+            ref={descRef}
+            className="max-w-[360px] text-[16px] leading-[1.65] tracking-[-0.02em] text-[#455050] opacity-0 lg:pb-4"
+          >
+            We work closely with our clients to understand their unique needs
+            and craft tailored solutions that address challenges.
+          </p>
+
+          <Link
+            ref={buttonRef}
+            to="/services"
+            className="group inline-flex w-fit items-center gap-3 rounded-full bg-[#188b88] py-2.5 pl-6 pr-2 text-[14px] font-bold text-white opacity-0 lg:justify-self-end lg:self-center"
+          >
+            More Projects
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#071515] text-white transition-transform duration-300 group-hover:rotate-45">
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </Link>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {projects.map((project, index) => {
+            const isLarge =
+              project.size === 'large-left' || project.size === 'large-right';
+
+            return (
+              <div
+                key={index}
+                ref={cardRefs[index]}
+                className={[
+                  'project-card group relative h-[330px] cursor-pointer overflow-hidden rounded-[8px] opacity-0 lg:h-[355px]',
+                  isLarge ? 'md:col-span-2' : 'md:col-span-1',
+                ].join(' ')}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-[#061f20]/28 transition-colors duration-500 group-hover:bg-[#061f20]/42" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061f20]/85 via-[#061f20]/25 to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-7 lg:p-8">
+                  <span className="mb-3 inline-flex rounded-[4px] bg-white/25 px-2.5 py-1.5 text-[12px] font-semibold leading-none text-white backdrop-blur-sm">
+                    {project.category}
+                  </span>
+
+                  <h3 className="max-w-[340px] text-[24px] font-bold leading-[1.18] tracking-[-0.05em] text-white lg:text-[26px]">
+                    {project.title}
+                  </h3>
+
+                  <div className="mt-4 flex translate-y-3 items-center gap-2 text-[15px] font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span>View Project</span>
+                    <ArrowUpRight className="h-4 w-4" />
+                  </div>
+                </div>
+
+                <div className="absolute right-6 top-6 flex h-11 w-11 scale-75 items-center justify-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

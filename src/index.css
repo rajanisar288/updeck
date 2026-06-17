@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 8% 92%;
+    --foreground: 174 28% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 174 28% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 174 28% 6%;
+    --primary: 178 55% 17%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 180 8% 96%;
+    --secondary-foreground: 174 28% 6%;
+    --muted: 180 8% 88%;
+    --muted-foreground: 174 8% 30%;
+    --accent: 174 52% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 8% 82%;
+    --input: 180 8% 82%;
+    --ring: 178 55% 17%;
+    --radius: 0.5rem;
+
+    --color-base: #e8edee;
+    --color-surface: #f4f7f8;
+    --color-dark: #0f1f1d;
+    --color-white: #ffffff;
+    --color-primary: #164543;
+    --color-accent: #4ecdc4;
+    --color-text-primary: #071515;
+    --color-text-secondary: #455050;
+    --color-text-muted: #9daaaa;
+  }
+
+  .dark {
+    --background: 174 28% 9%;
+    --foreground: 0 0% 98%;
+    --card: 174 28% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 174 28% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 174 52% 55%;
+    --primary-foreground: 174 28% 6%;
+    --secondary: 174 28% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 174 28% 15%;
+    --muted-foreground: 180 8% 60%;
+    --accent: 174 52% 55%;
+    --accent-foreground: 0 0% 100%;
+    --border: 174 28% 20%;
+    --input: 174 28% 20%;
+    --ring: 174 52% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[var(--color-base)] text-[var(--color-text-primary)] antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code,
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Directional glow animation */
+@keyframes glowMove {
+  0% {
+    background-position: -500%;
+  }
+
+  100% {
+    background-position: 500%;
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Number counter transition */
+.digit-slider {
+  will-change: transform;
+}
+
+/* Service card hover */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px -15px rgba(22, 69, 67, 0.2);
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary);
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+}
+
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+}
+
+
+.solutions-swiper .swiper-pagination {
+  bottom: 18px !important;
+}
+
+.solutions-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  opacity: 1;
+  margin: 0 5px !important;
+  transition: all 0.35s ease;
+}
+
+.solutions-swiper .swiper-pagination-bullet-active {
+  width: 64px;
+  background: #ffffff;
+}
+
+.solution-card {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.solution-card:hover {
+  transform: translateY(-2px);
+}
