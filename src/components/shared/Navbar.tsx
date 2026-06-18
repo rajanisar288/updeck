@@ -1,15 +1,10 @@
+import { ArrowUpRight, Menu, Search, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  ArrowUpRight,
-  Menu,
-  Search,
-  X,
-} from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Pages', path: '/about-us' },
+  { label: 'About', path: '/about-us' },
   { label: 'Services', path: '/services' },
   { label: 'Portfolios', path: '/portfolios' },
   { label: 'Blog', path: '/blog' },
@@ -80,9 +75,7 @@ export default function Navbar() {
                   to={link.path}
                   className={[
                     'text-[16px] font-medium tracking-[-0.03em] transition-colors duration-300',
-                    isActive
-                      ? 'text-[#188b88]'
-                      : 'text-[#071515] hover:text-[#188b88]',
+                    isActive ? 'text-[#188b88]' : 'text-[#071515] hover:text-[#188b88]',
                   ].join(' ')}
                 >
                   {link.label}
@@ -106,7 +99,6 @@ export default function Navbar() {
               className="group hidden items-center gap-3 rounded-full bg-[#188b88] py-2.5 pl-7 pr-2.5 text-[16px] font-bold tracking-[-0.03em] text-white transition-all duration-300 hover:bg-[#147a77] lg:flex"
             >
               Let's Talk
-
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#071515] text-white transition-transform duration-300 group-hover:rotate-45">
                 <ArrowUpRight className="h-4 w-4" />
               </span>
@@ -194,6 +186,17 @@ export default function Navbar() {
             })}
           </div>
 
+          <Link
+            to="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="group mb-10 flex w-full items-center justify-center gap-3 rounded-full bg-[#188b88] py-3 pl-6 pr-3 text-[16px] font-bold tracking-[-0.03em] text-white transition-all duration-300 hover:bg-[#147a77]"
+          >
+            Let's Talk
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white transition-transform duration-300 group-hover:rotate-45">
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </Link>
+
           {/* Contact Info */}
           <div className="mb-12">
             <h3 className="mb-7 text-[20px] font-bold tracking-[-0.04em] text-white">
@@ -202,9 +205,7 @@ export default function Navbar() {
 
             <div className="space-y-7">
               <div>
-                <p className="mb-2 text-[14px] font-medium text-white/35">
-                  Email
-                </p>
+                <p className="mb-2 text-[14px] font-medium text-white/35">Email</p>
                 <a
                   href="mailto:info@Updeck.com"
                   className="text-[16px] font-semibold text-white/55 transition-colors duration-300 hover:text-[#188b88]"
@@ -214,9 +215,7 @@ export default function Navbar() {
               </div>
 
               <div>
-                <p className="mb-2 text-[14px] font-medium text-white/35">
-                  Location
-                </p>
+                <p className="mb-2 text-[14px] font-medium text-white/35">Location</p>
                 <p className="max-w-[230px] text-[15px] font-semibold leading-[1.55] text-white/55">
                   993 Renner Burg, West Rond, MT 94251-030
                 </p>
