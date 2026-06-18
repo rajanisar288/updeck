@@ -1,20 +1,14 @@
+// src/components/LogoMarquee.tsx
+
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { content } from '@/data/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const logos = [
-  { name: 'Core', text: 'core', style: 'font-semibold tracking-[0.22em]' },
-  { name: 'Cloudac', text: 'cloudac™', style: 'font-semibold tracking-[-0.04em]' },
-  { name: 'Flomodia', text: 'flomodia™', style: 'font-serif italic tracking-[-0.05em]' },
-  { name: 'Weglot', text: 'WEGLOT', style: 'font-bold tracking-[0.1em]' },
-  { name: 'Updeck', text: 'Updeck', style: 'font-semibold tracking-[-0.03em]' },
-  { name: 'TSE', text: 'tse', style: 'font-bold tracking-[-0.06em]' },
-  { name: 'Monceau', text: 'monceau', style: 'font-light tracking-[0.12em]' },
-];
-
 export default function LogoMarquee() {
+  const { logoMarqueeSection } = content;
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -63,69 +57,77 @@ export default function LogoMarquee() {
     return () => ctx.revert();
   }, []);
 
+  const { logos, badgeText, badgeNumber, badgeSubText, brandName, brandSubText } = logoMarqueeSection;
+
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[var(--color-base)] py-16"
+      className="relative overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18] py-16"
     >
       {/* left smoke fade */}
-      <div className="pointer-events-none absolute left-0 top-0 z-30 h-full w-[24%] bg-gradient-to-r from-[var(--color-base)] via-[var(--color-base)]/95 to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 z-30 h-full w-[24%] bg-gradient-to-r from-[var(--color-base)] dark:from-[#0a1a18] via-[var(--color-base)]/95 dark:via-[#0a1a18]/95 to-transparent" />
 
       {/* right smoke fade */}
-      <div className="pointer-events-none absolute right-0 top-0 z-30 h-full w-[24%] bg-gradient-to-l from-[var(--color-base)] via-[var(--color-base)]/95 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-30 h-full w-[24%] bg-gradient-to-l from-[var(--color-base)] dark:from-[#0a1a18] via-[var(--color-base)]/95 dark:via-[#0a1a18]/95 to-transparent" />
 
       {/* main wrapper */}
-      <div className="relative h-[250px]">
-        {/* soft center smoke */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 z-[8] h-[125px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 blur-[34px]" />
+      <div className="relative h-[340px] overflow-visible">
+        {/* stronger center white smoke */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-[230px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/90 dark:bg-[#0f1f1d]/90 blur-[48px]" />
 
-        {/* teal/blue glow effect */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 z-[9] h-[85px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#188b88]/20 blur-[38px]" />
+        {/* blue glow effect */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-[21] h-[145px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#188b88]/25 dark:bg-[#4ecdc4]/25 blur-[52px]" />
 
-        {/* Marquee Track */}
-        <div
-          ref={trackRef}
-          className="absolute left-0 top-1/2 z-10 flex w-max -translate-y-1/2 animate-marquee gap-8 whitespace-nowrap opacity-0"
-        >
-          {[...logos, ...logos, ...logos].map((logo, index) => (
-            <div
-              key={`${logo.name}-${index}`}
-              className="flex h-[118px] w-[285px] flex-shrink-0 items-center justify-center rounded-[6px] bg-white/85 px-10"
-            >
-              <span
-                className={`text-[28px] leading-none text-[#071515]/28 grayscale ${logo.style}`}
-              >
-                {logo.text}
-              </span>
+        {/* Marquee Track Position Wrapper */}
+        <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2">
+          <div ref={trackRef} className="opacity-0">
+            <div className="flex w-max animate-marquee gap-8 whitespace-nowrap">
+              {[...logos, ...logos, ...logos].map((logo, index) => (
+                <div
+                  key={`${logo.name}-${index}`}
+                  className="flex h-[118px] w-[285px] flex-shrink-0 items-center justify-center rounded-[6px] bg-white/85 dark:bg-[#0f1f1d]/85 px-10"
+                >
+                  <span
+                    className={`text-[28px] leading-none text-[#071515]/28 dark:text-white/28 grayscale ${logo.style}`}
+                  >
+                    {logo.text}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Center Circle Badge */}
-        <div
-          ref={badgeRef}
-          className="absolute left-1/2 top-1/2 z-40 flex h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-dashed border-[#c6d0d0] opacity-0"
-        >
-          {/* white blur behind text */}
-          <div className="absolute left-1/2 top-1/2 -z-10 h-[115px] w-[275px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white blur-[24px]" />
+        {/* Center Circle Position Wrapper */}
+        <div className="absolute left-1/2 top-1/2 z-40 h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2">
+          <div
+            ref={badgeRef}
+            className="relative flex h-full w-full items-center justify-center rounded-full border border-dashed border-[#c6d0d0] dark:border-[#2a3f3d] opacity-0"
+          >
+            {/* glass blur inside circle */}
+            <div className="pointer-events-none absolute inset-0 z-0 rounded-full bg-white/20 dark:bg-[#0f1f1d]/20 backdrop-blur-[14px]" />
 
-          {/* teal blur behind 1000 */}
-          <div className="absolute left-1/2 top-[42%] -z-10 h-[55px] w-[150px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#188b88]/25 blur-[25px]" />
+            {/* white blur behind text */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-[150px] w-[310px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/95 dark:bg-[#0f1f1d]/95 blur-[34px]" />
 
-          <p className="text-center text-[21px] font-semibold leading-[1.35] tracking-[-0.04em] text-[#071515]">
-            Join Over{' '}
-            <span className="inline-flex rounded-full bg-[#188b88] px-2.5 py-[1px] text-white">
-              1000+
-            </span>
-            <br />
-            Companies with
-            <br />
-            <span className="relative inline-block font-bold text-[#071515]">
-              Updeck
-              <span className="absolute -bottom-[2px] left-0 h-px w-full bg-[#071515]/45" />
-            </span>{' '}
-            Here
-          </p>
+            {/* teal blur behind 1000 */}
+            <div className="pointer-events-none absolute left-1/2 top-[42%] z-[2] h-[75px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#188b88]/35 dark:bg-[#4ecdc4]/35 blur-[34px]" />
+
+            <p className="relative z-10 text-center text-[21px] font-semibold leading-[1.35] tracking-[-0.04em] text-[#071515] dark:text-[#e8edee]">
+              {badgeText}{' '}
+              <span className="inline-flex rounded-full bg-[#188b88] dark:bg-[#4ecdc4] px-2.5 py-[1px] text-white dark:text-[#0a1a18]">
+                {badgeNumber}
+              </span>
+              <br />
+              {badgeSubText}
+              <br />
+              <span className="relative inline-block font-bold text-[#071515] dark:text-[#e8edee]">
+                {brandName}
+                <span className="absolute -bottom-[2px] left-0 h-px w-full bg-[#071515]/45 dark:bg-white/45" />
+              </span>{' '}
+              {brandSubText}
+            </p>
+          </div>
         </div>
       </div>
     </section>

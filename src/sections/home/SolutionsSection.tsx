@@ -1,65 +1,45 @@
+// src/components/SolutionsSection.tsx
+
 import { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { ArrowUpRight, Box, Sparkles, Plus, ChevronRight, Aperture } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { content } from '@/data/content';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const solutions = [
-  {
-    icon: Sparkles,
-    title: 'Training and Development Programs',
-    description:
-      'Empower your workforce with cutting-edge skills and knowledge to drive organizational excellence and growth.',
-    image: '/images/project-learning.jpg',
-  },
-  {
-    icon: Plus,
-    title: 'Business Strategy Development',
-    description:
-      'Through a combination of data-driven insights and innovative approaches, we work closely with you to develop customized.',
-    image: '/images/project-event.jpg',
-  },
-  {
-    icon: Aperture,
-    title: 'Customer Experience Solutions',
-    description:
-      'Developing personalized customer journeys to increase satisfaction and loyalty of our expansion to keep competitive.',
-    image: '/images/project-marketing.jpg',
-  },
-  {
-    icon: ChevronRight,
-    title: 'Sustainability and ESG Consulting',
-    description:
-      'Provide tailored strategies that not only drive long-term value but also build trust with stakeholders, investors.',
-    image: '/images/project-environmental.jpg',
-  },
-  {
-    icon: Sparkles,
-    title: 'Training and Development Programs',
-    description:
-      'Empower your workforce with cutting-edge skills and knowledge to drive organizational excellence and growth.',
-    image: '/images/project-learning.jpg',
-  },
-  {
-    icon: Plus,
-    title: 'Business Strategy Development',
-    description:
-      'Through a combination of data-driven insights and innovative approaches, we work closely with you to develop customized.',
-    image: '/images/project-event.jpg',
-  },
-];
-const sliderSolutions = [...solutions, ...solutions, ...solutions];
+// Icon mapping for dynamic rendering
+const iconMap: Record<string, any> = {
+  Sparkles,
+  Plus,
+  ChevronRight,
+  Aperture,
+  Box,
+};
+
 export default function SolutionsSection() {
+  const { solutionsSection } = content;
   const sectionRef = useRef<HTMLElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Get the appropriate icon component
+  const getIcon = (iconName: string) => {
+    return iconMap[iconName] || Sparkles;
+  };
+
+  // Duplicate solutions for infinite loop effect
+  const sliderSolutions = [
+    ...solutionsSection.solutions,
+    ...solutionsSection.solutions,
+    ...solutionsSection.solutions
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -146,7 +126,7 @@ export default function SolutionsSection() {
           >
             <Box className="h-4 w-4 fill-[#188b88] text-[#188b88]" />
             <span className="text-[13px] font-bold uppercase tracking-[0.22em] text-white">
-              Our Solutions
+              {solutionsSection.badgeText}
             </span>
           </div>
 
@@ -154,11 +134,11 @@ export default function SolutionsSection() {
             ref={headingRef}
             className="overflow-hidden text-[40px] font-normal leading-[1.13] tracking-[-0.045em] text-white sm:text-[52px] lg:text-[58px]"
           >
-            <span className="heading-line block">Solutions to Transform</span>
+            <span className="heading-line block">{solutionsSection.headingLine1}</span>
             <span className="heading-line block">
-              Your{' '}
+              {solutionsSection.headingLine2}{' '}
               <em className="not-italic text-[#188b88]">
-                Business.
+                {solutionsSection.highlightedText}
               </em>
             </span>
           </h2>
@@ -172,11 +152,11 @@ export default function SolutionsSection() {
               clickable: true,
             }}
             autoplay={{
-              delay: 1800,
+              delay: solutionsSection.autoplayDelay || 1800,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
-            speed={900}
+            speed={solutionsSection.speed || 900}
             loop={true}
             loopAdditionalSlides={12}
             centeredSlides={true}
@@ -186,14 +166,14 @@ export default function SolutionsSection() {
             className="solutions-swiper !overflow-visible !pb-20"
           >
             {sliderSolutions.map((solution, index) => {
-              const Icon = solution.icon;
+              const Icon = getIcon(solution.icon);
 
               return (
                 <SwiperSlide
                   key={`${solution.title}-${index}`}
                   className="!h-auto !w-[430px] max-w-[86vw]"
                 >
-                  <div className="solution-card group relative h-[455px] overflow-hidden rounded-[8px] border border-white/[0.03] bg-[#132b2d] transition-all duration-500 hover:border-[#188b88]/35">
+                  <div className="solution-card group relative h-[455px] overflow-hidden rounded-[8px] border border-white/[0.03] bg-[#132b2d] transition-all duration-500 hover:border-[#188b88]/35 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
                     {/* image on hover */}
                     <img
                       src={solution.image}
@@ -226,10 +206,10 @@ export default function SolutionsSection() {
                         </p>
 
                         <a
-                          href="/services"
+                          href={solutionsSection.ctaLink || "/services"}
                           className="mt-7 inline-flex w-fit items-center gap-3 text-[15px] font-bold text-white"
                         >
-                          Learn More
+                          {solutionsSection.ctaText || "Learn More"}
                           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#188b88] text-white transition-transform duration-300 group-hover:rotate-45">
                             <ArrowUpRight className="h-4 w-4" />
                           </span>

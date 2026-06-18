@@ -59,7 +59,39 @@
   }
 }
 
+
+
 @layer base {
+  @layer base {
+
+    /* Additional dark mode overrides */
+    .dark {
+      --color-base: #0a1a18;
+      --color-surface: #0f1f1d;
+      --color-text-primary: #e8edee;
+      --color-text-secondary: #9daaaa;
+      --color-text-muted: #5a6a68;
+    }
+
+    /* Improve card styling in dark mode */
+    .dark .service-card:hover {
+      box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Dark mode scrollbar */
+    .dark ::-webkit-scrollbar-track {
+      background: #0a1a18;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: #2a3f3d;
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #4a6a68;
+    }
+  }
+
   * {
     @apply border-border;
   }

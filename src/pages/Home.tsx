@@ -5,11 +5,9 @@ import AboutSection from '@/sections/home/AboutSection';
 import SolutionsSection from '@/sections/home/SolutionsSection';
 import ProjectsSection from '@/sections/home/ProjectsSection';
 import StatsSection from '@/sections/home/StatsSection';
-import AwardsSection from '@/sections/home/AwardsSection';
-import TestimonialsSection from '@/sections/home/TestimonialsSection';
 import FAQSection from '@/sections/home/FAQSection';
 import ContactFormSection from '@/sections/home/ContactFormSection';
-import BlogSection from '@/sections/home/BlogSection';
+import ResourceSection from '@/sections/home/ResourceSection';
 
 export default function Home() {
   return (
@@ -21,11 +19,12 @@ export default function Home() {
       <SolutionsSection />
       <ProjectsSection />
       <StatsSection />
-      <AwardsSection />
-      <TestimonialsSection />
+      {/* <AwardsSection />
+      <TestimonialsSection /> */}
       <FAQSection />
       <ContactFormSection />
-      <BlogSection />
+      <ResourceSection />
+      {/* <BlogSection /> */}
     </>
   );
 }
