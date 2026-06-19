@@ -13,10 +13,10 @@ import {
 export const content = {
     heroSection: {
         badgeText: "Recognized For Excellence",
-        headingLine1: "Driving Excellence",
-        headingLine2: "Through Evolution",
-        headingLine3: "and",
-        highlightedText: "Trust.",
+        headingLine1: "Engineering Better",
+        headingLine2: "Businesses Through",
+        // headingLine3: "and",
+        highlightedText: "Technology.",
         description: "Represents growth, expansion, and modern business solution present growth, expansion.",
         scrollText: "Scroll Down",
         ctaText: "About Us",
