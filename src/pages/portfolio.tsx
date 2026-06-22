@@ -9,6 +9,7 @@ import {
     ChevronRight,
     Home,
 } from 'lucide-react';
+import { CASE_STUDIES } from '@/data/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -233,11 +234,121 @@ function PortfolioGridSection() {
     );
 }
 
+function CaseStudyCard({ study, index }: { study: typeof CASE_STUDIES[0]; index: number }) {
+    const isEven = index % 2 === 0;
+    
+    return (
+        <article className="case-study-reveal flex flex-col md:flex-row items-center gap-10 md:gap-16 py-16 border-b border-[#e5ecec] dark:border-[#1a2e2d] last:border-0">
+            <div className={`w-full md:w-1/2 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                <div className="relative overflow-hidden rounded-[16px] bg-[#f4f7f7] dark:bg-[#152624] aspect-[4/3] group">
+                    <div className="absolute inset-[-15%] h-[130%] w-[130%]">
+                        <img 
+                            src={study.image} 
+                            alt={study.alt} 
+                            className="cs-image-parallax absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                    </div>
+                    <div className="absolute inset-0 bg-[#061f20]/10 transition-colors duration-500 group-hover:bg-[#061f20]/30" />
+                </div>
+            </div>
+            
+            <div className={`w-full md:w-1/2 ${isEven ? 'md:order-2' : 'md:order-1'}`}>
+                <h3 className="mb-6 text-[32px] md:text-[40px] font-bold leading-[1.1] tracking-[-0.04em] text-[#071515] dark:text-white">
+                    {study.title}
+                </h3>
+                <p className="mb-10 text-[17px] leading-[1.6] text-[#435151] dark:text-[#9daaaa]">
+                    {study.description}
+                </p>
+                <Link
+                    to={`/case-studies/${study.slug}`}
+                    className="inline-flex items-center gap-3 rounded-full bg-[#188b88] px-7 py-3.5 text-[15px] font-bold text-white transition-all duration-300 hover:bg-[#071515] hover:-translate-y-1 hover:shadow-lg dark:bg-[#4ecdc4] dark:text-[#0a1a18] dark:hover:bg-white"
+                >
+                    View Case Study
+                    <ArrowUpRight className="h-4 w-4" />
+                </Link>
+            </div>
+        </article>
+    );
+}
+
+function CaseStudiesSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.utils.toArray('.case-study-reveal').forEach((element: any) => {
+                // Card entrance reveal
+                gsap.fromTo(
+                    element,
+                    {
+                        y: 100,
+                        opacity: 0,
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: 'power4.out',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse',
+                        },
+                    }
+                );
+
+                // Image parallax scrubbing
+                const parallaxImg = element.querySelector('.cs-image-parallax');
+                if (parallaxImg) {
+                    gsap.to(parallaxImg, {
+                        yPercent: 20,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: true,
+                        }
+                    });
+                }
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section className="px-4 py-24 sm:px-6 lg:px-12 xl:px-20 bg-white dark:bg-[#0f1f1d]">
+            <div ref={sectionRef} className="mx-auto max-w-[1320px]">
+                <div className="mb-16 text-center">
+                    <div className="case-study-reveal mb-6">
+                        <SectionBadge>Case Studies</SectionBadge>
+                    </div>
+
+                    <h2 className="case-study-reveal text-[44px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[56px] lg:text-[64px]">
+                        Discover Our{' '}
+                        <span className="text-[#188b88] dark:text-[#4ecdc4]">
+                            Success Stories.
+                        </span>
+                    </h2>
+                </div>
+
+                <div className="flex flex-col">
+                    {CASE_STUDIES.map((study, index) => (
+                        <CaseStudyCard key={study.slug} study={study} index={index} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
 export default function Portfolio() {
     return (
         <main className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]">
             <PortfolioHero />
             <PortfolioGridSection />
+            <CaseStudiesSection />
         </main>
     );
 }

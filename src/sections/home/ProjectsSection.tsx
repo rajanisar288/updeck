@@ -26,112 +26,124 @@ export default function ProjectsSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: {
-          ease: 'power3.out',
+          ease: 'power4.out',
         },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 65%',
-          toggleActions: 'play none none reverse',
+          start: 'top 70%',
+          toggleActions: 'play none none none',
         },
       });
 
       tl.fromTo(
         labelRef.current,
         {
-          y: 26,
+          y: 30,
           opacity: 0,
+          filter: 'blur(5px)',
         },
         {
           y: 0,
           opacity: 1,
-          duration: 0.55,
+          filter: 'blur(0px)',
+          duration: 0.8,
         }
       )
         .fromTo(
           headingRef.current?.querySelectorAll('.heading-line') || [],
           {
-            y: 45,
+            y: 60,
             opacity: 0,
+            clipPath: 'inset(100% 0 0 0)',
           },
           {
             y: 0,
             opacity: 1,
-            duration: 0.75,
-            stagger: 0.12,
+            clipPath: 'inset(0% 0 0 0)',
+            duration: 1.2,
+            stagger: 0.15,
           },
-          '-=0.2'
+          '-=0.6'
         )
         .fromTo(
           [descRef.current, buttonRef.current],
           {
-            y: 35,
+            y: 40,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 0.7,
-            stagger: 0.1,
+            duration: 1,
+            stagger: 0.15,
           },
-          '-=0.45'
+          '-=0.8'
         )
         .fromTo(
           topLeftRef.current,
           {
-            x: -85,
+            x: -100,
             opacity: 0,
-            scale: 0.97,
+            scale: 0.9,
+            clipPath: 'inset(0 100% 0 0)',
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.9,
+            clipPath: 'inset(0 0% 0 0)',
+            duration: 1.4,
           },
-          '-=0.1'
+          '-=0.4'
         )
         .fromTo(
           topRightRef.current,
           {
-            x: 85,
+            x: 100,
             opacity: 0,
-            scale: 0.97,
+            scale: 0.9,
+            clipPath: 'inset(0 0 0 100%)',
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.9,
+            clipPath: 'inset(0 0% 0 0)',
+            duration: 1.4,
           },
           '<'
         )
         .fromTo(
           bottomLeftRef.current,
           {
-            x: -85,
+            x: -100,
             opacity: 0,
-            scale: 0.97,
+            scale: 0.9,
+            clipPath: 'inset(0 100% 0 0)',
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.9,
+            clipPath: 'inset(0 0% 0 0)',
+            duration: 1.4,
           },
-          '-=0.42'
+          '-=1'
         )
         .fromTo(
           bottomRightRef.current,
           {
-            x: 85,
+            x: 100,
             opacity: 0,
-            scale: 0.97,
+            scale: 0.9,
+            clipPath: 'inset(0 0 0 100%)',
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.9,
+            clipPath: 'inset(0 0% 0 0)',
+            duration: 1.4,
           },
           '<'
         );

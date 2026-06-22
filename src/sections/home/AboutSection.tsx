@@ -22,88 +22,93 @@ export default function AboutSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: {
-          ease: 'power3.out',
+          ease: 'power4.out',
         },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 65%',
-          toggleActions: 'play none none reverse',
+          start: 'top 70%',
+          toggleActions: 'play none none none',
         },
       });
 
       tl.fromTo(
         leftImageRef.current,
         {
-          x: -55,
+          x: -60,
           opacity: 0,
-          scale: 0.97,
+          scale: 0.9,
+          clipPath: 'inset(0 100% 0 0)'
         },
         {
           x: 0,
           opacity: 1,
           scale: 1,
-          duration: 0.9,
+          clipPath: 'inset(0 0% 0 0)',
+          duration: 1.4,
         }
       )
         .fromTo(
           rightTopRef.current,
           {
-            x: 55,
+            x: 60,
             opacity: 0,
-            scale: 0.97,
+            scale: 0.9,
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.9,
+            duration: 1.2,
           },
-          '-=0.72'
+          '-=1'
         )
         .fromTo(
           rightTopRef.current?.querySelectorAll('.about-text-reveal') || [],
           {
-            y: 38,
+            y: 50,
             opacity: 0,
+            filter: 'blur(5px)',
           },
           {
             y: 0,
             opacity: 1,
-            duration: 0.72,
-            stagger: 0.1,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            stagger: 0.15,
           },
-          '-=0.35'
+          '-=0.8'
         )
         .fromTo(
           experienceRef.current,
           {
-            y: 45,
+            y: 60,
             opacity: 0,
-            scale: 0.95,
+            scale: 0.8,
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.75,
+            duration: 1.2,
+            ease: 'back.out(1.4)'
           },
-          '-=0.25'
+          '-=0.8'
         )
         .fromTo(
           [testimonialRef.current, videoRef.current],
           {
-            y: 55,
+            y: 80,
             opacity: 0,
-            scale: 0.96,
+            scale: 0.9,
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.78,
-            stagger: 0.14,
+            duration: 1.2,
+            stagger: 0.2,
           },
-          '-=0.38'
+          '-=1'
         );
 
       const counter = {
@@ -119,8 +124,8 @@ export default function AboutSection() {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 65%',
-          toggleActions: 'play none none reverse',
+          start: 'top 70%',
+          toggleActions: 'play none none none',
         },
         onUpdate: () => {
           if (countRef.current) {

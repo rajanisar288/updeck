@@ -15,51 +15,53 @@ export default function HeroSection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        defaults: { ease: 'power3.out' },
+        defaults: { ease: 'power4.out' },
       });
 
       tl.fromTo(
         textRef.current?.querySelectorAll('.animate-item') || [],
         {
-          y: 55,
+          y: 70,
           opacity: 0,
+          clipPath: 'inset(100% 0 0 0)',
         },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
-          stagger: 0.16,
+          clipPath: 'inset(0% 0 0 0)',
+          duration: 1.4,
+          stagger: 0.15,
         }
       )
         .fromTo(
           imageRef.current,
           {
             opacity: 0,
-            scale: 1.08,
-            x: 50,
+            scale: 1.15,
+            x: 60,
           },
           {
             opacity: 1,
             scale: 1,
             x: 0,
-            duration: 1.15,
+            duration: 1.6,
           },
-          '-=0.7'
+          '-=1.2'
         )
         .fromTo(
           cardRef.current,
           {
-            y: 40,
+            y: 60,
             opacity: 0,
-            scale: 0.94,
+            scale: 0.85,
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.75,
+            duration: 1.2,
           },
-          '-=0.45'
+          '-=0.8'
         );
 
       const counter = { value: 0 };

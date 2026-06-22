@@ -50,7 +50,7 @@ export default function Navbar() {
             'relative flex h-[72px] w-full items-center justify-between bg-white px-4 rounded-b-[12px] transition-all duration-500 sm:px-6 lg:h-[86px] lg:px-12 xl:px-20 dark:bg-[#0f1f1d]',
             isScrolled ? 'shadow-[0_12px_40px_rgba(7,21,21,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)]' : 'shadow-none',
             isMobileMenuOpen
-              ? 'pointer-events-none opacity-0 lg:pointer-events-auto lg:opacity-100'
+              ? 'pointer-events-none opacity-0 xl:pointer-events-auto xl:opacity-100'
               : 'opacity-100',
           ].join(' ')}
         >
@@ -64,7 +64,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Links Center */}
-          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-9 lg:flex">
+          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-5 xl:gap-8 xl:flex">
             {navLinks.map((link) => {
               const isActive =
                 location.pathname === link.path ||
@@ -89,7 +89,7 @@ export default function Navbar() {
           <div className="relative z-10 flex items-center gap-4">
             <button
               type="button"
-              className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#eef3f3] text-[#071515] transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#1a2f2d] dark:text-white dark:hover:bg-[#4ecdc4] lg:flex"
+              className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#eef3f3] text-[#071515] transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#1a2f2d] dark:text-white dark:hover:bg-[#4ecdc4] xl:flex"
               aria-label="Search"
             >
               <Search className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#eef3f3] text-[#071515] transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#1a2f2d] dark:text-white dark:hover:bg-[#4ecdc4] lg:flex"
+              className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#eef3f3] text-[#071515] transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#1a2f2d] dark:text-white dark:hover:bg-[#4ecdc4] xl:flex"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
@@ -111,7 +111,7 @@ export default function Navbar() {
 
             <Link
               to="/contact"
-              className="group hidden items-center gap-3 rounded-full bg-[#188b88] py-2.5 pl-7 pr-2.5 text-[16px] font-bold tracking-[-0.03em] text-white transition-all duration-300 hover:bg-[#147a77] lg:flex"
+              className="group hidden items-center gap-3 rounded-full bg-[#188b88] py-2.5 pl-7 pr-2.5 text-[16px] font-bold tracking-[-0.03em] text-white transition-all duration-300 hover:bg-[#147a77] xl:flex"
             >
               Let's Talk
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#071515] text-white transition-transform duration-300 group-hover:rotate-45 dark:bg-[#0f1f1d]">
@@ -122,7 +122,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="flex h-11 w-11 items-center justify-center rounded-[6px] bg-[#188b88] text-white transition-all duration-300 hover:bg-[#147a77] lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-[6px] bg-[#188b88] text-white transition-all duration-300 hover:bg-[#147a77] xl:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-7 w-7" />
@@ -134,7 +134,7 @@ export default function Navbar() {
       {/* Mobile Side Menu */}
       <div
         className={[
-          'fixed inset-0 z-[60] lg:hidden',
+          'fixed inset-0 z-[60] xl:hidden',
           isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none',
         ].join(' ')}
       >

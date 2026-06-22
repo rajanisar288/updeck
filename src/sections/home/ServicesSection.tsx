@@ -33,58 +33,60 @@ export default function ServicesSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: {
-          ease: 'power3.out',
+          ease: 'power4.out',
         },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 72%',
-          toggleActions: 'play none none reverse',
+          start: 'top 75%',
+          toggleActions: 'play none none none',
         },
       });
 
       tl.fromTo(
         labelRef.current,
         {
-          y: 26,
+          y: 30,
           opacity: 0,
+          filter: 'blur(10px)',
         },
         {
           y: 0,
           opacity: 1,
-          duration: 0.55,
+          filter: 'blur(0px)',
+          duration: 1,
         }
       )
         .fromTo(
           headingRef.current?.querySelectorAll('.heading-line') || [],
           {
-            y: 45,
+            y: 60,
             opacity: 0,
+            clipPath: 'inset(100% 0 0 0)',
           },
           {
             y: 0,
             opacity: 1,
-            duration: 0.75,
-            stagger: 0.12,
+            clipPath: 'inset(0% 0 0 0)',
+            duration: 1.2,
+            stagger: 0.15,
           },
-          '-=0.2'
+          '-=0.6'
         )
         .fromTo(
           cardsRef.current?.querySelectorAll('.service-card-item') || [],
           {
-            x: 34,
-            y: -34,
+            y: 80,
             opacity: 0,
-            scale: 0.96,
+            scale: 0.9,
           },
           {
-            x: 0,
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.8,
-            stagger: 0.16,
+            duration: 1.2,
+            stagger: 0.15,
           },
-          '-=0.2'
+          '-=0.8'
         );
     }, sectionRef);
 
