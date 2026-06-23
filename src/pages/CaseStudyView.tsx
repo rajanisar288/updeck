@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronRight, Home, ArrowLeft, CheckCircle2 } from 'lucide-react';
@@ -15,7 +14,7 @@ export default function CaseStudyView() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        
+
         const ctx = gsap.context(() => {
             // Parallax for hero image
             gsap.to('.hero-bg-img', {
@@ -115,7 +114,7 @@ export default function CaseStudyView() {
                         />
                     </div>
                     <div className="absolute inset-0 bg-[#061f20]/70" />
-                    
+
                     <div className="relative z-10 mx-auto flex min-h-[400px] max-w-[1000px] flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-12">
                         <h1 className="hero-title text-[40px] font-bold leading-[1.1] tracking-[-0.04em] text-white sm:text-[52px] lg:text-[60px]">
                             {study.title}
@@ -137,8 +136,8 @@ export default function CaseStudyView() {
             <section className="px-4 py-20 sm:px-6 lg:px-12 xl:px-20">
                 <div className="mx-auto max-w-[1100px]">
                     <div className="reveal mb-8">
-                        <Link 
-                            to="/portfolios" 
+                        <Link
+                            to="/portfolios"
                             className="inline-flex items-center gap-2 text-[16px] font-bold text-[#188b88] transition-colors hover:text-[#071515] dark:text-[#4ecdc4] dark:hover:text-white"
                         >
                             <ArrowLeft className="h-5 w-5" />
