@@ -1,12 +1,11 @@
 // src/pages/Services.tsx
 
-import { useEffect, useRef, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import PageTitle from '@/components/shared/PageTitle';
+import { content } from '@/data/content';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
-  ArrowUpRight,
   BarChart3,
   Box,
   ChevronRight,
@@ -17,7 +16,8 @@ import {
   Monitor,
   Users,
 } from 'lucide-react';
-import { content } from '@/data/content';
+import { useEffect, useRef, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,26 +31,21 @@ const iconMap: Record<string, any> = {
   Megaphone,
 };
 
-function SectionBadge({
-  children,
-  dark = false,
-}: {
-  children: ReactNode;
-  dark?: boolean;
-}) {
-
+function SectionBadge({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-[2px] border border-dashed px-4 py-2 ${dark
-        ? 'border-white/15 text-white'
-        : 'border-[#c3cece] text-[#071515] dark:border-[#2a3f3d] dark:text-white'
-        }`}
+      className={`inline-flex items-center gap-2 rounded-[2px] border border-dashed px-4 py-2 ${
+        dark
+          ? 'border-white/15 text-white'
+          : 'border-[#c3cece] text-[#071515] dark:border-[#2a3f3d] dark:text-white'
+      }`}
     >
       <Box
-        className={`h-4 w-4 ${dark
-          ? 'fill-[#4ecdc4] text-[#4ecdc4]'
-          : 'fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]'
-          }`}
+        className={`h-4 w-4 ${
+          dark
+            ? 'fill-[#4ecdc4] text-[#4ecdc4]'
+            : 'fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]'
+        }`}
       />
 
       <span className="text-[13px] font-bold uppercase leading-none tracking-[0.2em]">
@@ -97,10 +92,7 @@ function ServicesHero() {
           >
             <Home className="h-4 w-4 fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]" />
 
-            <Link
-              to="/"
-              className="transition-colors duration-300 hover:text-[#4ecdc4]"
-            >
+            <Link to="/" className="transition-colors duration-300 hover:text-[#4ecdc4]">
               Home
             </Link>
 
@@ -115,7 +107,6 @@ function ServicesHero() {
 }
 
 function ServiceCard({ service }: { service: any }) {
-  const { servicesPage } = content;
   const Icon = iconMap[service.icon] || BarChart3;
 
   return (
@@ -124,19 +115,36 @@ function ServiceCard({ service }: { service: any }) {
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
     >
-      <div className="mb-24 flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#cbdada] bg-[#e9f1f1] text-[#188b88] transition-all duration-500 group-hover:border-white/25 group-hover:bg-white group-hover:text-[#188b88] dark:border-[#2a3f3d] dark:bg-[#152624] dark:text-[#4ecdc4] dark:group-hover:bg-[#0a1a18] dark:group-hover:text-[#4ecdc4]">
+      <div className="mb-10 flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#cbdada] bg-[#e9f1f1] text-[#188b88] transition-all duration-500 group-hover:border-white/25 group-hover:bg-white group-hover:text-[#188b88] dark:border-[#2a3f3d] dark:bg-[#152624] dark:text-[#4ecdc4] dark:group-hover:bg-[#0a1a18] dark:group-hover:text-[#4ecdc4]">
         <Icon className="h-11 w-11 stroke-[1.7]" />
       </div>
 
-      <h3 className="mb-8 max-w-[330px] text-[28px] font-bold leading-[1.22] tracking-[-0.055em] text-[#071515] transition-colors duration-500 group-hover:text-white dark:text-white dark:group-hover:text-[#0a1a18]">
+      <h3 className="mb-6 max-w-[330px] text-[28px] font-bold leading-[1.22] tracking-[-0.055em] text-[#071515] transition-colors duration-500 group-hover:text-white dark:text-white dark:group-hover:text-[#0a1a18]">
         {service.title}
       </h3>
 
-      <p className="mb-10 max-w-[360px] text-[17px] font-medium leading-[1.55] tracking-[-0.03em] text-[#435151] transition-colors duration-500 group-hover:text-white/90 dark:text-[#9daaaa] dark:group-hover:text-[#0a1a18]/85">
-        {service.description}
-      </p>
+      {service.purpose && (
+        <p className="mb-6 max-w-[360px] text-[17px] font-medium leading-[1.55] tracking-[-0.03em] text-[#435151] transition-colors duration-500 group-hover:text-white/90 dark:text-[#9daaaa] dark:group-hover:text-[#0a1a18]/85">
+          {service.purpose}
+        </p>
+      )}
 
-      <Link
+      {/* Bullet Points */}
+      {service.points && service.points.length > 0 && (
+        <ul className="mb-10 space-y-2.5 max-w-[380px]">
+          {service.points.map((point: string, idx: number) => (
+            <li
+              key={idx}
+              className="flex items-start gap-2.5 text-[15px] font-medium leading-[1.4] text-[#435151] transition-colors duration-500 group-hover:text-white/90 dark:text-[#9daaaa] dark:group-hover:text-[#0a1a18]/85"
+            >
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#188b88] transition-colors duration-500 group-hover:bg-white dark:bg-[#4ecdc4] dark:group-hover:bg-[#0a1a18]" />
+              {point}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* <Link
         to={servicesPage.ctaLink}
         className="inline-flex items-center gap-3 text-[16px] font-bold leading-none text-[#071515] transition-colors duration-500 group-hover:text-white dark:text-white dark:group-hover:text-[#0a1a18]"
       >
@@ -145,7 +153,7 @@ function ServiceCard({ service }: { service: any }) {
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#071515] text-white transition-all duration-500 group-hover:bg-white group-hover:text-[#071515] group-hover:rotate-45 dark:bg-[#4ecdc4] dark:text-[#0a1a18] dark:group-hover:bg-[#0a1a18] dark:group-hover:text-white">
           <ArrowUpRight className="h-4 w-4" />
         </span>
-      </Link>
+      </Link> */}
     </motion.article>
   );
 }
@@ -208,9 +216,12 @@ function ServicesGridSection() {
 
 export default function Services() {
   return (
-    <main className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]">
-      <ServicesHero />
-      <ServicesGridSection />
-    </main>
+    <>
+      <PageTitle title="Contact Us" description="Welcome to Updeck - Your trusted partner" />
+      <main className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]">
+        <ServicesHero />
+        <ServicesGridSection />
+      </main>
+    </>
   );
 }

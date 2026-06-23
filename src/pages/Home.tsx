@@ -1,29 +1,28 @@
-import HeroSection from '@/sections/home/HeroSection';
-import ServicesSection from '@/sections/home/ServicesSection';
-import LogoMarquee from '@/sections/home/LogoMarquee';
+import PageTitle from '@/components/shared/PageTitle';
 import AboutSection from '@/sections/home/AboutSection';
-import SolutionsSection from '@/sections/home/SolutionsSection';
-import ProjectsSection from '@/sections/home/ProjectsSection';
-import StatsSection from '@/sections/home/StatsSection';
-import FAQSection from '@/sections/home/FAQSection';
 import ContactFormSection from '@/sections/home/ContactFormSection';
-import ResourceSection from '@/sections/home/ResourceSection';
+import FAQSection from '@/sections/home/FAQSection';
+import HeroSection from '@/sections/home/HeroSection';
+import ProjectsSection from '@/sections/home/ProjectsSection';
+import ServicesSection from '@/sections/home/ServicesSection';
+import SolutionsSection from '@/sections/home/SolutionsSection';
 
 export default function Home() {
   return (
     <>
+      <PageTitle title="Home" description="Welcome to Updeck - Your trusted partner" />
       <HeroSection />
       <ServicesSection />
-      <LogoMarquee />
+      {/* <LogoMarquee /> */}
       <AboutSection />
       <SolutionsSection />
       <ProjectsSection />
-      <StatsSection />
+      {/* <StatsSection /> */}
       {/* <AwardsSection />
       <TestimonialsSection /> */}
       <FAQSection />
       <ContactFormSection />
-      <ResourceSection />
+      {/* <ResourceSection /> */}
       {/* <BlogSection /> */}
     </>
   );

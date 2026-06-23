@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import SectionLabel from '@/components/shared/SectionLabel';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionLabel from '@/components/shared/SectionLabel';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -140,21 +140,35 @@ export default function ContactFormSection() {
 
         <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1320px] items-center px-4 py-16 sm:px-6 lg:px-12 xl:px-20">
           <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_575px]">
-            {/* Left side only for map spacing */}
-            <div className="hidden lg:block" />
+            {/* Left side with text content */}
+            <div className="hidden lg:block contact-reveal">
+              <div className="max-w-[480px]">
+                <SectionLabel text="GET IN TOUCH" dark className="mb-7" />
+
+                <h2 className="text-[42px] font-normal leading-[1.13] tracking-[-0.045em] text-white sm:text-[52px] lg:text-[58px]">
+                  <span className="block">Let's Explore</span>
+                  <span className="block">
+                    What's{' '}
+                    <em className="not-italic text-[#188b88] dark:text-[#4ecdc4]">Possible</em>
+                  </span>
+                </h2>
+
+                <p className="mt-6 text-[17px] leading-[1.7] text-white/70 dark:text-white/70">
+                  Have a project in mind? Let's connect and discuss how we can help you achieve your
+                  goals.
+                </p>
+              </div>
+            </div>
 
             {/* Right Form Card */}
             <form
               onSubmit={handleSubmit}
               className="contact-reveal w-full rounded-[10px] bg-white/[0.105] px-8 py-10 backdrop-blur-[10px] sm:px-10 lg:px-12 lg:py-14"
             >
-              <SectionLabel text="GET IN TOUCH" dark className="mb-7" />
+              <SectionLabel text="GET IN TOUCH" dark className="mb-7 lg:hidden" />
 
-              <h2 className="mb-14 text-[42px] font-normal leading-none tracking-[-0.055em] text-white sm:text-[52px]">
-                Drop Us a{' '}
-                <em className="not-italic text-[#188b88] dark:text-[#4ecdc4]">
-                  Line.
-                </em>
+              <h2 className="mb-14 text-[42px] font-normal leading-none tracking-[-0.055em] text-white sm:text-[52px] lg:hidden">
+                Drop Us a <em className="not-italic text-[#188b88] dark:text-[#4ecdc4]">Line.</em>
               </h2>
 
               <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
@@ -163,9 +177,7 @@ export default function ContactFormSection() {
                   placeholder="Full name *"
                   required
                   value={formData.fullName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   className="h-[42px] w-full border-0 border-b border-white/16 bg-transparent px-0 pb-3 text-[15px] font-medium text-white outline-none placeholder:text-white/55 focus:border-[#4ecdc4]"
                 />
 
@@ -174,9 +186,7 @@ export default function ContactFormSection() {
                   placeholder="Email address *"
                   required
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="h-[42px] w-full border-0 border-b border-white/16 bg-transparent px-0 pb-3 text-[15px] font-medium text-white outline-none placeholder:text-white/55 focus:border-[#4ecdc4]"
                 />
 
@@ -185,9 +195,7 @@ export default function ContactFormSection() {
                   placeholder="Phone number *"
                   required
                   value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="h-[42px] w-full border-0 border-b border-white/16 bg-transparent px-0 pb-3 text-[15px] font-medium text-white outline-none placeholder:text-white/55 focus:border-[#4ecdc4]"
                 />
 
@@ -197,17 +205,14 @@ export default function ContactFormSection() {
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className="flex h-[42px] w-full items-center justify-between border-0 border-b border-white/16 bg-transparent px-0 pb-3 text-left text-[15px] font-medium outline-none transition-colors focus:border-[#4ecdc4]"
                   >
-                    <span
-                      className={
-                        formData.service ? 'text-white' : 'text-white/55'
-                      }
-                    >
+                    <span className={formData.service ? 'text-white' : 'text-white/55'}>
                       {formData.service || 'Chose a option'}
                     </span>
 
                     <ChevronDown
-                      className={`h-4 w-4 text-white transition-transform ${isDropdownOpen ? 'rotate-180' : ''
-                        }`}
+                      className={`h-4 w-4 text-white transition-transform ${
+                        isDropdownOpen ? 'rotate-180' : ''
+                      }`}
                     />
                   </button>
 
@@ -236,9 +241,7 @@ export default function ContactFormSection() {
                 required
                 rows={4}
                 value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="mt-9 h-[118px] w-full resize-none border-0 border-b border-white/16 bg-transparent px-0 pb-3 text-[15px] font-medium text-white outline-none placeholder:text-white/55 focus:border-[#4ecdc4]"
               />
 
@@ -247,7 +250,6 @@ export default function ContactFormSection() {
                 className="group mt-8 inline-flex h-[52px] items-center rounded-full bg-[#188b88] pl-6 pr-1.5 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#157a76]"
               >
                 Send Message
-
                 <span className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#071515] text-white transition-transform duration-300 group-hover:rotate-45">
                   <ArrowUpRight className="h-4 w-4" />
                 </span>

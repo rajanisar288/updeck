@@ -10,7 +10,7 @@ export default function HeroSection() {
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const countRef = useRef<HTMLDivElement>(null);
+  // const countRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,16 +71,16 @@ export default function HeroSection() {
         duration: 1.8,
         delay: 0.7,
         ease: 'power2.out',
-        onUpdate: () => {
-          if (countRef.current) {
-            countRef.current.textContent = `${Math.floor(counter.value)}k`;
-          }
-        },
-        onComplete: () => {
-          if (countRef.current) {
-            countRef.current.textContent = '30k';
-          }
-        },
+        // onUpdate: () => {
+        //   if (countRef.current) {
+        //     countRef.current.textContent = `${Math.floor(counter.value)}k`;
+        //   }
+        // },
+        // onComplete: () => {
+        //   if (countRef.current) {
+        //     countRef.current.textContent = '30k';
+        //   }
+        // },
       });
     }, heroRef);
 
@@ -105,8 +105,10 @@ export default function HeroSection() {
           </div>
 
           {/* Scroll Down */}
-          {/* Scroll Down */}
-          <div className="animate-item absolute bottom-16 left-8 hidden flex-col items-center gap-4 text-[#9aa8a6] dark:text-[#6a8a88] lg:flex">
+          <button
+            onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
+            className="animate-item absolute bottom-16 left-8 hidden flex-col items-center gap-4 text-[#9aa8a6] dark:text-[#6a8a88] hover:text-white dark:hover:text-white transition-colors cursor-pointer lg:flex"
+          >
             <span className="[writing-mode:vertical-rl] rotate-180 text-[13px] font-semibold tracking-wide">
               {heroSection.scrollText}
             </span>
@@ -114,7 +116,7 @@ export default function HeroSection() {
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 dark:bg-white/10">
               <ChevronDown className="h-5 w-5 animate-bounce" />
             </div>
-          </div>
+          </button>
 
           <div className="relative z-10 w-full max-w-[680px]">
             <div className="animate-item inline-flex items-center gap-3 rounded-[2px] border border-dashed border-white/15 dark:border-white/10 bg-white/[0.02] dark:bg-white/[0.03] px-4 py-2">
@@ -138,7 +140,7 @@ export default function HeroSection() {
             <div className="animate-item mt-14 max-w-[540px] border-y border-dashed border-white/15 dark:border-white/10 py-7">
               <div className="grid grid-cols-[110px_1px_1fr] items-start gap-8">
                 <Link
-                  to="/about-us"
+                  to="/business-impact"
                   className="group flex h-[72px] w-[72px] items-center justify-center text-white transition-all duration-300 hover:text-[#15928c] dark:hover:text-[#4ecdc4]"
                 >
                   <ArrowUpRight className="h-[72px] w-[72px] stroke-[1.1] transition-transform duration-300 group-hover:rotate-45" />
@@ -167,10 +169,10 @@ export default function HeroSection() {
           {/* Floating Stats Card - FIXED for dark mode */}
           <div
             ref={cardRef}
-            className="absolute bottom-0 left-0 w-[295px] rounded-tr-[10px] bg-[#f4f6f4] dark:bg-transparent p-4 sm:w-[325px] lg:left-0 lg:bottom-0"
+            className="absolute bottom-0 left-0 w-[295px] rounded-tr-[10px] bg-[#f4f6f4] dark:bg-transparent p-2 pb-[0px] pl-[0px] sm:w-[325px] lg:left-0 lg:bottom-0"
           >
             <div className="rounded-[10px] bg-white dark:bg-[#0f1f1d] px-7 py-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-              <div className="mb-9 flex items-center">
+              {/* <div className="mb-9 flex items-center">
                 <div className="flex -space-x-3">
                   {[11, 12, 13].map((img) => (
                     <div
@@ -189,13 +191,14 @@ export default function HeroSection() {
                 <div className="-ml-2 flex h-14 w-14 items-center justify-center rounded-full bg-[#15928c] dark:bg-[#4ecdc4] text-white">
                   <span className="text-2xl font-light leading-none">+</span>
                 </div>
-              </div>
+              </div> */}
 
               <div
-                ref={countRef}
-                className="font-mono text-[52px] font-semibold leading-none tracking-[0.08em] text-[#061f20] dark:text-white"
+                // ref={countRef}
+                className="font-mono text-[25px] font-semibold leading-none tracking-[0.08em] text-[#061f20] dark:text-white"
               >
-                0k
+                140%–280% <br />
+                <span className='text-[15px]'>Estimated ROI</span>
               </div>
 
               <p className="mt-4 max-w-[205px] text-[15px] leading-[1.5] text-[#52605f] dark:text-[#9daaaa]">

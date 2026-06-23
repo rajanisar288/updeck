@@ -1,11 +1,11 @@
 // src/components/ProjectsSection.tsx
 
-import { useEffect, useRef } from 'react';
-import { ArrowUpRight, Box } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { content } from '@/data/content';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { content } from '@/data/content';
+import { ArrowUpRight, Box } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,12 +152,7 @@ export default function ProjectsSection() {
     return () => ctx.revert();
   }, []);
 
-  const cardRefs = [
-    topLeftRef,
-    topRightRef,
-    bottomLeftRef,
-    bottomRightRef,
-  ];
+  const cardRefs = [topLeftRef, topRightRef, bottomLeftRef, bottomRightRef];
 
   return (
     <section
@@ -182,9 +177,7 @@ export default function ProjectsSection() {
               ref={headingRef}
               className="overflow-hidden text-[38px] font-normal leading-[1.12] tracking-[-0.04em] text-[#071515] dark:text-[#e8edee] sm:text-[48px] lg:text-[56px]"
             >
-              <span className="heading-line block">
-                {projectsSection.headingLine1}
-              </span>
+              <span className="heading-line block">{projectsSection.headingLine1}</span>
               <span className="heading-line block">
                 {projectsSection.headingLine2}{' '}
                 <em className="not-italic text-[#188b88] dark:text-[#4ecdc4]">
@@ -216,8 +209,7 @@ export default function ProjectsSection() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {projectsSection.projects.map((project, index) => {
-            const isLarge =
-              project.size === 'large-left' || project.size === 'large-right';
+            const isLarge = project.size === 'large-left' || project.size === 'large-right';
 
             return (
               <div
@@ -246,10 +238,13 @@ export default function ProjectsSection() {
                     {project.title}
                   </h3>
 
-                  <div className="mt-4 flex translate-y-3 items-center gap-2 text-[15px] font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <Link
+                    to={`/case-studies/${project.slug}`}
+                    className="mt-4 flex translate-y-3 items-center gap-2 text-[15px] font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                  >
                     <span>{projectsSection.viewProjectText}</span>
                     <ArrowUpRight className="h-4 w-4" />
-                  </div>
+                  </Link>
                 </div>
 
                 <div className="absolute right-6 top-6 flex h-11 w-11 scale-75 items-center justify-center rounded-full bg-white/20 dark:bg-white/15 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">

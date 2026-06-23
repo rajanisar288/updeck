@@ -1,25 +1,29 @@
 // src/components/Footer.tsx
 
-import { Link } from 'react-router-dom';
-import {
-  ArrowUpRight,
-  Phone,
-  Mail,
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Send
-} from 'lucide-react';
-import { useState } from 'react';
-import { content } from '@/data/content';
 import { useTheme } from '@/context/ThemeContext';
+import { content } from '@/data/content';
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const { footerSection } = content;
-  const [email, setEmail] = useState('');
-  const [agreed, setAgreed] = useState(false);
   const { theme } = useTheme();
+
+  // Business Impact headings - show only 3 + Show More
+  const businessImpactHeadings = [
+    '24/7 Digital Veterinary Care Platform',
+    'Online Pet Pharmacy Platform',
+    'Logistics & Transportation Platform',
+    // 'Shipping & Clearing Platform', // This will be replaced with "Show More"
+  ];
+
+  // Portfolio items - show only 3 + Show More
+  const portfolioItems = [
+    'E-Commerce Platform Development',
+    'Healthcare Management System',
+    'Mobile App for Retail',
+    // This will be replaced with "Show More"
+  ];
 
   return (
     <footer className="relative overflow-hidden bg-[var(--color-base)] px-3 pb-3 pt-20 dark:bg-[#0a1a18]">
@@ -76,37 +80,27 @@ export default function Footer() {
         {/* inner content same width as CTA */}
         <div className="relative z-10 mx-auto max-w-[1160px]">
           {/* Footer Columns */}
-          <div className="grid grid-cols-1 gap-12 pb-16 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_1.35fr] lg:gap-16">
+          <div className="grid grid-cols-1 gap-12 pb-16 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-16">
             {/* Brand */}
             <div>
               <Link to="/" className="mb-7 inline-flex items-center gap-3">
-                {/* <span className="flex h-10 w-10 items-center justify-center text-[#188b88] dark:text-[#4ecdc4]">
-                  <Box className="h-10 w-10 fill-[#188b88] stroke-[#188b88] dark:fill-[#4ecdc4] dark:stroke-[#4ecdc4]" />
-                </span>
-
-                <span className="text-[32px] font-semibold leading-none tracking-[-0.04em] text-[#071515] dark:text-white">
-                  {footerSection.brandName}
-                </span> */}
-                <img src={theme === 'dark' ? '/images/logo/footer-white.png' : '/images/logo/footer-main.png'} alt="updeck logo" />
+                <img
+                  src={
+                    theme === 'dark'
+                      ? '/images/logo/footer-white.png'
+                      : '/images/logo/footer-main.png'
+                  }
+                  alt="updeck logo"
+                  className="h-10 w-auto"
+                />
               </Link>
 
               <p className="mb-8 max-w-[280px] text-[15px] font-medium leading-[1.6] tracking-[-0.03em] text-[#536363] dark:text-[#9daaaa]">
                 {footerSection.brandDescription}
               </p>
-
-              <div className="flex items-center gap-5">
-                {footerSection.awards.map((award, index) => (
-                  <div key={index} className="flex items-center gap-2 text-[#071515] dark:text-white">
-                    <span className="text-[18px] font-bold leading-none">{award.value}</span>
-                    <span className="text-[8px] font-bold uppercase leading-[1.05] tracking-[0.06em]">
-                      {award.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            {/* Services */}
+            {/* Services - All service headings linking to /services */}
             <div>
               <h4 className="mb-7 text-[18px] font-bold leading-none tracking-[-0.03em] text-[#071515] dark:text-white">
                 {footerSection.servicesTitle}
@@ -115,98 +109,98 @@ export default function Footer() {
               <ul className="space-y-5">
                 {footerSection.services.map((link) => (
                   <li key={link}>
-                    <span className="cursor-pointer text-[15px] font-medium leading-none tracking-[-0.03em] text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]">
-                      {link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="mb-7 text-[18px] font-bold leading-none tracking-[-0.03em] text-[#071515] dark:text-white">
-                {footerSection.resourcesTitle}
-              </h4>
-
-              <ul className="space-y-5">
-                {footerSection.resources.map((link) => (
-                  <li key={link.label}>
                     <Link
-                      to={link.path}
-                      className="inline-flex items-center gap-2 text-[15px] font-medium leading-none tracking-[-0.03em] text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"
+                      to="/services"
+                      className="text-[15px] font-medium leading-none tracking-[-0.03em] text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"
                     >
-                      {link.label}
-
-                      {link.badge && (
-                        <span className="rounded-full bg-[#188b88] px-2 py-[2px] text-[8px] font-bold uppercase leading-none text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
-                          {link.badge}
-                        </span>
-                      )}
+                      {link}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Newsletter */}
+            {/* Portfolio - Show only 3 items + Show More link */}
             <div>
-              <h4 className="mb-7 max-w-[320px] text-[31px] font-normal leading-[1.18] tracking-[-0.055em] text-[#071515] dark:text-white">
-                {footerSection.newsletterTitle}
+              <h4 className="mb-7 text-[18px] font-bold leading-none tracking-[-0.03em] text-[#071515] dark:text-white">
+                Portfolio
               </h4>
 
-              <div className="relative mb-5 max-w-[320px]">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={footerSection.newsletterPlaceholder}
-                  className="h-[54px] w-full rounded-[6px] border-0 bg-white px-6 pr-14 text-[15px] font-medium text-[#071515] outline-none placeholder:text-[#536363] focus:ring-2 focus:ring-[#188b88] dark:bg-[#0f1f1d] dark:text-white dark:placeholder:text-[#9daaaa]"
-                />
-
-                <button
-                  type="button"
-                  className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-[#188b88] transition-colors duration-300 hover:bg-[#188b88] hover:text-white dark:text-[#4ecdc4] dark:hover:bg-[#4ecdc4] dark:hover:text-[#0a1a18]"
-                  aria-label="Subscribe"
-                >
-                  <Send className="h-5 w-5 fill-current" />
-                </button>
-              </div>
-
-              <label className="flex cursor-pointer items-center gap-3">
-                <input
-                  type="checkbox"
-                  checked={agreed}
-                  onChange={(e) => setAgreed(e.target.checked)}
-                  className="h-4 w-4 rounded border-[#536363] bg-transparent text-[#188b88] focus:ring-[#188b88]"
-                />
-
-                <span className="text-[14px] font-medium tracking-[-0.03em] text-[#536363] dark:text-[#9daaaa]">
-                  {footerSection.termsText}{' '}
+              <ul className="space-y-5">
+                {portfolioItems.slice(0, 3).map((item) => (
+                  <li key={item}>
+                    <Link
+                      to="/portfolios"
+                      className="text-[15px] font-medium leading-none tracking-[-0.03em] text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+                <li>
                   <Link
-                    to={footerSection.termsLink}
-                    className="font-bold text-[#071515] hover:text-[#188b88] dark:text-white dark:hover:text-[#4ecdc4]"
+                    to="/portfolios"
+                    className="inline-flex items-center gap-2 text-[15px] font-medium leading-none tracking-[-0.03em] text-[#188b88] transition-colors duration-300 hover:text-[#147a77] dark:text-[#4ecdc4] dark:hover:text-[#45b8b0]"
                   >
-                    {footerSection.termsLinkText}
+                    Show More
+                    <ArrowUpRight className="h-4 w-4" />
                   </Link>
-                </span>
-              </label>
+                </li>
+              </ul>
             </div>
+
+            {/* Business Impact - Show only 3 items + Show More link */}
+            <div>
+              <h4 className="mb-7 text-[18px] font-bold leading-none tracking-[-0.03em] text-[#071515] dark:text-white">
+                Business Impact
+              </h4>
+
+              <ul className="space-y-5">
+                {businessImpactHeadings.slice(0, 3).map((heading) => (
+                  <li key={heading}>
+                    <Link
+                      to="/business-impact"
+                      className="text-[15px] font-medium leading-none tracking-[-0.03em] text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"
+                    >
+                      {heading}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    to="/business-impact"
+                    className="inline-flex items-center gap-2 text-[15px] font-medium leading-none tracking-[-0.03em] text-[#188b88] transition-colors duration-300 hover:text-[#147a77] dark:text-[#4ecdc4] dark:hover:text-[#45b8b0]"
+                  >
+                    Show More
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Info - Removed phone number */}
+            {/* <div>
+              <h4 className="mb-7 max-w-[320px] text-[31px] font-normal leading-[1.18] tracking-[-0.055em] text-[#071515] dark:text-white">
+                {footerSection.contactTitle}
+              </h4>
+
+              <div className="space-y-4">
+                <a
+                  href={`mailto:${footerSection.email}`}
+                  className="inline-flex items-center gap-3 text-[16px] font-medium text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#188b88] text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
+                    <Mail className="h-4 w-4" />
+                  </span>
+                  {footerSection.email}
+                </a>
+              </div>
+            </div> */}
           </div>
 
-          {/* Bottom Bar */}
+          {/* Bottom Bar - Removed phone number */}
           <div className="flex flex-col items-center justify-between gap-6 border-t border-[#b9c8c8] pt-6 dark:border-[#2a3f3d] lg:flex-row">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-7">
-              <a
-                href={`tel:${footerSection.phoneNumber}`}
-                className="inline-flex items-center gap-2 text-[15px] font-medium text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"
-              >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#188b88] text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
-                  <Phone className="h-3.5 w-3.5" />
-                </span>
-                {footerSection.phoneNumber}
-              </a>
-
               <a
                 href={`mailto:${footerSection.email}`}
                 className="inline-flex items-center gap-2 text-[15px] font-medium text-[#536363] transition-colors duration-300 hover:text-[#188b88] dark:text-[#9daaaa] dark:hover:text-[#4ecdc4]"

@@ -1,15 +1,17 @@
 // src/components/FAQSection.tsx
 
-import { useEffect, useRef, useState } from 'react';
-import { Phone, Plus, Minus } from 'lucide-react';
+import { content } from '@/data/content';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { content } from '@/data/content';
+import { ArrowUpRight, Minus, Plus } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FAQSection() {
-  const { faqSection } = content;
+  const { faqSection, footerSection } = content;
+
   const sectionRef = useRef<HTMLElement>(null);
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -64,23 +66,29 @@ export default function FAQSection() {
           </h2>
 
           {/* Floating Call Card */}
-          <div className="absolute bottom-0 right-0 w-[225px] rounded-[8px] bg-[#188b88] p-7 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18] sm:w-[245px]">
+          <div className="absolute bottom-0 right-0 w-[225px] rounded-[8px] bg-[#188b88] p-7 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18] sm:w-[225px]">
             <h4 className="mb-8 text-[24px] font-bold leading-[1.2] tracking-[-0.04em]">
               {faqSection.cardTitle}
               <br />
-              {faqSection.cardSubtitle}
+              {/* {faqSection.cardSubtitle} */}
             </h4>
 
-            <div className="mb-6 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#071515] text-white dark:bg-[#0a1a18]">
-              <Phone className="h-5 w-5 fill-white text-white" />
-            </div>
+            <Link
+              to={footerSection.ctaLink}
+              className="group inline-flex h-[43px] items-center rounded-full bg-[#071515] pl-6 pr-1.5 text-[14px] font-bold text-white transition-colors duration-300 hover:bg-black"
+            >
+              Let's Talk
+              <span className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#071515] transition-transform duration-300 group-hover:rotate-45">
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
+            </Link>
 
-            <a
+            {/* <a
               href={`tel:${faqSection.phoneNumber}`}
               className="text-[21px] font-bold leading-none tracking-[-0.04em] text-white underline decoration-white/80 underline-offset-4 dark:text-[#0a1a18] dark:decoration-[#0a1a18]/70"
             >
               {faqSection.phoneNumber}
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -114,8 +122,9 @@ export default function FAQSection() {
                   </button>
 
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[260px]' : 'max-h-0'
-                      }`}
+                    className={`overflow-hidden transition-all duration-300 ${
+                      isOpen ? 'max-h-[260px]' : 'max-h-0'
+                    }`}
                   >
                     <div className="px-8 pb-8">
                       <div className="border-t border-[#d8e0e0] pt-6 dark:border-[#2a3f3d]">

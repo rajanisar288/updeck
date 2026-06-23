@@ -1,7 +1,7 @@
-import { ArrowUpRight, Menu, Search, X, Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/context/ThemeContext';
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '@/context/ThemeContext';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -48,7 +48,9 @@ export default function Navbar() {
         <nav
           className={[
             'relative flex h-[72px] w-full items-center justify-between bg-white px-4 rounded-b-[12px] transition-all duration-500 sm:px-6 lg:h-[86px] lg:px-12 xl:px-20 dark:bg-[#0f1f1d]',
-            isScrolled ? 'shadow-[0_12px_40px_rgba(7,21,21,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)]' : 'shadow-none',
+            isScrolled
+              ? 'shadow-[0_12px_40px_rgba(7,21,21,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)]'
+              : 'shadow-none',
             isMobileMenuOpen
               ? 'pointer-events-none opacity-0 xl:pointer-events-auto xl:opacity-100'
               : 'opacity-100',
@@ -76,7 +78,9 @@ export default function Navbar() {
                   to={link.path}
                   className={[
                     'text-[16px] font-medium tracking-[-0.03em] transition-colors duration-300',
-                    isActive ? 'text-[#188b88]' : 'text-[#071515] hover:text-[#188b88] dark:text-white dark:hover:text-[#4ecdc4]',
+                    isActive
+                      ? 'text-[#188b88]'
+                      : 'text-[#071515] hover:text-[#188b88] dark:text-white dark:hover:text-[#4ecdc4]',
                   ].join(' ')}
                 >
                   {link.label}
@@ -87,13 +91,13 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="relative z-10 flex items-center gap-4">
-            <button
+            {/* <button
               type="button"
               className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#eef3f3] text-[#071515] transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#1a2f2d] dark:text-white dark:hover:bg-[#4ecdc4] xl:flex"
               aria-label="Search"
             >
               <Search className="h-5 w-5" />
-            </button>
+            </button> */}
 
             {/* Theme Toggle */}
             <button
@@ -102,11 +106,7 @@ export default function Navbar() {
               className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#eef3f3] text-[#071515] transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#1a2f2d] dark:text-white dark:hover:bg-[#4ecdc4] xl:flex"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
+              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
 
             <Link
@@ -172,11 +172,7 @@ export default function Navbar() {
                 className="flex h-10 w-10 items-center justify-center text-white/90 transition-colors duration-300 hover:text-[#188b88]"
                 aria-label="Toggle theme"
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-7 w-7" />
-                ) : (
-                  <Moon className="h-7 w-7" />
-                )}
+                {theme === 'dark' ? <Sun className="h-7 w-7" /> : <Moon className="h-7 w-7" />}
               </button>
 
               <button

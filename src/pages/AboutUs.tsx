@@ -1,45 +1,31 @@
 // src/pages/AboutUs.tsx
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import PageTitle from '@/components/shared/PageTitle';
+import { content } from '@/data/content';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  ArrowUpRight,
-  Box,
-  Check,
-
-  Minus,
-  Plus,
-  Quote,
-  Star,
-  ChevronRight,
-  Home
-} from 'lucide-react';
-import { content } from '@/data/content';
+import { ArrowUpRight, Box, Check, ChevronRight, Home } from 'lucide-react';
+import { useEffect, useRef, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SectionBadge({
-  children,
-  dark = false,
-}: {
-  children: ReactNode;
-  dark?: boolean;
-}) {
+function SectionBadge({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-[2px] border border-dashed px-4 py-2 ${dark
-        ? 'border-white/15 text-white'
-        : 'border-[#c3cece] text-[#071515] dark:border-[#2a3f3d] dark:text-white'
-        }`}
+      className={`inline-flex items-center gap-2 rounded-[2px] border border-dashed px-4 py-2 ${
+        dark
+          ? 'border-white/15 text-white'
+          : 'border-[#c3cece] text-[#071515] dark:border-[#2a3f3d] dark:text-white'
+      }`}
     >
       <Box
-        className={`h-4 w-4 ${dark
-          ? 'fill-[#4ecdc4] text-[#4ecdc4]'
-          : 'fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]'
-          }`}
+        className={`h-4 w-4 ${
+          dark
+            ? 'fill-[#4ecdc4] text-[#4ecdc4]'
+            : 'fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]'
+        }`}
       />
 
       <span className="text-[13px] font-bold uppercase leading-none tracking-[0.2em]">
@@ -61,16 +47,18 @@ function PillButton({
   return (
     <Link
       to={to}
-      className={`group inline-flex h-[46px] items-center rounded-full pl-6 pr-1.5 text-[14px] font-bold transition-colors duration-300 ${dark
-        ? 'bg-[#071515] text-white hover:bg-black'
-        : 'bg-[#188b88] text-white hover:bg-[#157a76]'
-        }`}
+      className={`group inline-flex h-[46px] items-center rounded-full pl-6 pr-1.5 text-[14px] font-bold transition-colors duration-300 ${
+        dark
+          ? 'bg-[#071515] text-white hover:bg-black'
+          : 'bg-[#188b88] text-white hover:bg-[#157a76]'
+      }`}
     >
       {children}
 
       <span
-        className={`ml-4 flex h-9 w-9 items-center justify-center rounded-full transition-transform duration-300 group-hover:rotate-45 ${dark ? 'bg-white text-[#071515]' : 'bg-[#071515] text-white'
-          }`}
+        className={`ml-4 flex h-9 w-9 items-center justify-center rounded-full transition-transform duration-300 group-hover:rotate-45 ${
+          dark ? 'bg-white text-[#071515]' : 'bg-[#071515] text-white'
+        }`}
       >
         <ArrowUpRight className="h-4 w-4" />
       </span>
@@ -116,15 +104,7 @@ function FeatureCard({ item }: { item: any }) {
   );
 }
 
-function MissionCard({
-  title,
-  text,
-  points,
-}: {
-  title: string;
-  text: string;
-  points: string[];
-}) {
+function MissionCard({ title, text, points }: { title: string; text: string; points: string[] }) {
   return (
     <div className="rounded-[7px] bg-white p-7 dark:bg-[#0f1f1d]">
       <h4 className="mb-4 text-[18px] font-bold leading-none text-[#071515] dark:text-white">
@@ -150,61 +130,61 @@ function MissionCard({
   );
 }
 
-function TeamCard({ member }: { member: any }) {
-  return (
-    <motion.div
-      className="about-reveal group"
-      whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-    >
-      <div className="relative h-[430px] overflow-hidden rounded-[7px] bg-[#cddada]">
-        <img
-          src={member.image}
-          alt={member.name}
-          className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-        />
+// function TeamCard({ member }: { member: any }) {
+//   return (
+//     <motion.div
+//       className="about-reveal group"
+//       whileHover={{ y: -8 }}
+//       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+//     >
+//       <div className="relative h-[430px] overflow-hidden rounded-[7px] bg-[#cddada]">
+//         <img
+//           src={member.image}
+//           alt={member.name}
+//           className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+//         />
 
-        <div className="absolute inset-0 bg-[#061f20]/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+//         <div className="absolute inset-0 bg-[#061f20]/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-        <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 translate-y-5 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          {member.socialLinks.map((social: any, index: number) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={index}
-                href={social.url}
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-white/22 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:hover:bg-[#4ecdc4] dark:hover:text-[#0a1a18]"
-                aria-label="Social link"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            );
-          })}
-        </div>
-      </div>
+//         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 translate-y-5 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+//           {member.socialLinks.map((social: any, index: number) => {
+//             const Icon = social.icon;
+//             return (
+//               <a
+//                 key={index}
+//                 href={social.url}
+//                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/22 text-white backdrop-blur-sm transition-all duration-300 hover:bg-[#188b88] hover:text-white dark:hover:bg-[#4ecdc4] dark:hover:text-[#0a1a18]"
+//                 aria-label="Social link"
+//               >
+//                 <Icon className="h-4 w-4" />
+//               </a>
+//             );
+//           })}
+//         </div>
+//       </div>
 
-      <div className="mt-6 flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-[24px] font-bold leading-none tracking-[-0.05em] text-[#071515] dark:text-white">
-            {member.name}
-          </h3>
+//       <div className="mt-6 flex items-start justify-between gap-4">
+//         <div>
+//           <h3 className="text-[24px] font-bold leading-none tracking-[-0.05em] text-[#071515] dark:text-white">
+//             {member.name}
+//           </h3>
 
-          <p className="mt-3 text-[15px] font-medium leading-none text-[#536363] dark:text-[#9daaaa]">
-            {member.role}
-          </p>
-        </div>
+//           <p className="mt-3 text-[15px] font-medium leading-none text-[#536363] dark:text-[#9daaaa]">
+//             {member.role}
+//           </p>
+//         </div>
 
-        <a
-          href="#"
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white text-[22px] font-bold leading-none text-[#071515] shadow-[0_8px_24px_rgba(7,21,21,0.08)] transition-colors duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#0f1f1d] dark:text-white dark:hover:bg-[#4ecdc4] dark:hover:text-[#0a1a18]"
-          aria-label={`${member.name} profile`}
-        >
-          @
-        </a>
-      </div>
-    </motion.div>
-  );
-}
+//         <a
+//           href="#"
+//           className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white text-[22px] font-bold leading-none text-[#071515] shadow-[0_8px_24px_rgba(7,21,21,0.08)] transition-colors duration-300 hover:bg-[#188b88] hover:text-white dark:bg-[#0f1f1d] dark:text-white dark:hover:bg-[#4ecdc4] dark:hover:text-[#0a1a18]"
+//           aria-label={`${member.name} profile`}
+//         >
+//           @
+//         </a>
+//       </div>
+//     </motion.div>
+//   );
+// }
 
 function AboutHero() {
   const { aboutPage } = content;
@@ -243,10 +223,7 @@ function AboutHero() {
           >
             <Home className="h-4 w-4 fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]" />
 
-            <Link
-              to="/"
-              className="transition-colors duration-300 hover:text-[#4ecdc4]"
-            >
+            <Link to="/" className="transition-colors duration-300 hover:text-[#4ecdc4]">
               Home
             </Link>
 
@@ -349,9 +326,9 @@ function MissionVisionSection() {
     >
       <PatternBackground />
 
-      <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-stretch gap-12 lg:grid-cols-[0.95fr_1.05fr]">
         {/* Left Image */}
-        <div className="about-reveal relative min-h-[610px] overflow-hidden rounded-[8px]">
+        <div className="about-reveal relative min-h-[610px] h-full overflow-hidden rounded-[8px]">
           <img
             src={aboutPage.missionImage}
             alt="Business progress"
@@ -399,7 +376,7 @@ function MissionVisionSection() {
         </div>
 
         {/* Right Content */}
-        <div>
+        <div className="flex flex-col justify-center">
           <div className="about-reveal mb-6">
             <SectionBadge>{aboutPage.missionBadge}</SectionBadge>
           </div>
@@ -426,9 +403,9 @@ function MissionVisionSection() {
           </div>
 
           {/* Full Width Button */}
-          <div className="about-reveal mt-7">
+          {/* <div className="about-reveal mt-7">
             <Link
-              to="/about-us"
+              to="/contact"
               className="group flex h-[56px] w-full items-center justify-center rounded-[7px] bg-[#188b88] text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#157a76] dark:bg-[#4ecdc4] dark:text-[#0a1a18] dark:hover:bg-[#43b8b0]"
             >
               {aboutPage.missionCta}
@@ -437,222 +414,219 @@ function MissionVisionSection() {
                 <ArrowUpRight className="h-4 w-4" />
               </span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
   );
 }
 
-function LogoMarqueeSection() {
-  const { aboutPage } = content;
+// function LogoMarqueeSection() {
+//   const { aboutPage } = content;
 
-  return (
-    <section className="about-section relative overflow-hidden bg-[var(--color-base)] py-20 dark:bg-[#0a1a18]">
-      <div className="relative h-[250px]">
-        <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-[22%] bg-gradient-to-r from-[var(--color-base)] to-transparent dark:from-[#0a1a18]" />
-        <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-[22%] bg-gradient-to-l from-[var(--color-base)] to-transparent dark:from-[#0a1a18]" />
+//   return (
+//     <section className="about-section relative overflow-hidden bg-[var(--color-base)] py-20 dark:bg-[#0a1a18]">
+//       <div className="relative h-[250px]">
+//         <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-[22%] bg-gradient-to-r from-[var(--color-base)] to-transparent dark:from-[#0a1a18]" />
+//         <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-[22%] bg-gradient-to-l from-[var(--color-base)] to-transparent dark:from-[#0a1a18]" />
 
-        <div className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 animate-marquee gap-8 whitespace-nowrap">
-          {[...aboutPage.logos, ...aboutPage.logos, ...aboutPage.logos].map((logo: string, index: number) => (
-            <div
-              key={`${logo}-${index}`}
-              className="flex h-[118px] w-[285px] items-center justify-center rounded-[6px] bg-white/85 px-8 dark:bg-[#0f1f1d]/85"
-            >
-              <span className="text-[28px] font-bold text-[#071515]/35 dark:text-white/30">
-                {logo}
-              </span>
-            </div>
-          ))}
-        </div>
+//         <div className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 animate-marquee gap-8 whitespace-nowrap">
+//           {[...aboutPage.logos, ...aboutPage.logos, ...aboutPage.logos].map(
+//             (logo: string, index: number) => (
+//               <div
+//                 key={`${logo}-${index}`}
+//                 className="flex h-[118px] w-[285px] items-center justify-center rounded-[6px] bg-white/85 px-8 dark:bg-[#0f1f1d]/85"
+//               >
+//                 <span className="text-[28px] font-bold text-[#071515]/35 dark:text-white/30">
+//                   {logo}
+//                 </span>
+//               </div>
+//             )
+//           )}
+//         </div>
 
-        <div className="absolute left-1/2 top-1/2 z-30 flex h-[330px] mt-[52px] w-[330px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-dashed border-[#c6d0d0] bg-[var(--color-base)]/75 text-center backdrop-blur-sm dark:border-[#2a3f3d] dark:bg-[#0a1a18]/75">
-          <p className="text-[21px] font-bold leading-[1.35] text-[#071515] dark:text-white">
-            {aboutPage.marqueeText1}{' '}
-            <span className="rounded-full bg-[#188b88] px-2.5 py-0.5 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
-              {aboutPage.marqueeHighlight}
-            </span>
-            <br />
-            {aboutPage.marqueeText2}
-            <br />
-            {aboutPage.marqueeText3}
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="absolute left-1/2 top-1/2 z-30 flex h-[330px] mt-[52px] w-[330px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-dashed border-[#c6d0d0] bg-[var(--color-base)]/75 text-center backdrop-blur-sm dark:border-[#2a3f3d] dark:bg-[#0a1a18]/75">
+//           <p className="text-[21px] font-bold leading-[1.35] text-[#071515] dark:text-white">
+//             {aboutPage.marqueeText1}{' '}
+//             <span className="rounded-full bg-[#188b88] px-2.5 py-0.5 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
+//               {aboutPage.marqueeHighlight}
+//             </span>
+//             <br />
+//             {aboutPage.marqueeText2}
+//             <br />
+//             {aboutPage.marqueeText3}
+//           </p>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
-function CustomerReviewSection() {
-  const { aboutPage } = content;
+// function CustomerReviewSection() {
+//   const { aboutPage } = content;
 
-  return (
-    <section className="about-section px-4 py-24 sm:px-6 lg:px-12 xl:px-20">
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
-        <div className="about-reveal rounded-[8px] bg-white p-10 dark:bg-[#0f1f1d] lg:p-12">
-          <Quote
-            className="mb-10 h-20 w-20 rotate-180 text-[#188b88] dark:text-[#4ecdc4]"
-            fill="currentColor"
-            strokeWidth={0}
-          />
+//   return (
+//     <section className="about-section px-4 py-24 sm:px-6 lg:px-12 xl:px-20">
+//       <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
+//         <div className="about-reveal rounded-[8px] bg-white p-10 dark:bg-[#0f1f1d] lg:p-12">
+//           <Quote
+//             className="mb-10 h-20 w-20 rotate-180 text-[#188b88] dark:text-[#4ecdc4]"
+//             fill="currentColor"
+//             strokeWidth={0}
+//           />
 
-          <p className="mb-12 max-w-[560px] text-[18px] font-medium leading-[1.65] tracking-[-0.03em] text-[#536363] dark:text-[#9daaaa]">
-            {aboutPage.reviewText}
-          </p>
+//           <p className="mb-12 max-w-[560px] text-[18px] font-medium leading-[1.65] tracking-[-0.03em] text-[#536363] dark:text-[#9daaaa]">
+//             {aboutPage.reviewText}
+//           </p>
 
-          <div className="flex items-center gap-4 border-t border-dashed border-[#cbd6d6] pt-7 dark:border-[#2a3f3d]">
-            <img
-              src={aboutPage.reviewAuthorImage}
-              alt={aboutPage.reviewAuthorName}
-              className="h-14 w-14 rounded-full object-cover"
-            />
+//           <div className="flex items-center gap-4 border-t border-dashed border-[#cbd6d6] pt-7 dark:border-[#2a3f3d]">
+//             <img
+//               src={aboutPage.reviewAuthorImage}
+//               alt={aboutPage.reviewAuthorName}
+//               className="h-14 w-14 rounded-full object-cover"
+//             />
 
-            <div>
-              <h4 className="text-[20px] font-bold leading-none text-[#071515] dark:text-white">
-                {aboutPage.reviewAuthorName}
-              </h4>
+//             <div>
+//               <h4 className="text-[20px] font-bold leading-none text-[#071515] dark:text-white">
+//                 {aboutPage.reviewAuthorName}
+//               </h4>
 
-              <p className="mt-2 text-[13px] font-medium text-[#536363] dark:text-[#9daaaa]">
-                {aboutPage.reviewAuthorRole}
-              </p>
-            </div>
-          </div>
-        </div>
+//               <p className="mt-2 text-[13px] font-medium text-[#536363] dark:text-[#9daaaa]">
+//                 {aboutPage.reviewAuthorRole}
+//               </p>
+//             </div>
+//           </div>
+//         </div>
 
-        <div className="about-reveal relative min-h-[450px] overflow-hidden rounded-[8px]">
-          <img
-            src={aboutPage.reviewImage}
-            alt="Customer review"
-            className="h-full w-full object-cover object-center"
-          />
+//         <div className="about-reveal relative min-h-[450px] overflow-hidden rounded-[8px]">
+//           <img
+//             src={aboutPage.reviewImage}
+//             alt="Customer review"
+//             className="h-full w-full object-cover object-center"
+//           />
 
-          <div className="absolute inset-0 bg-[#061f20]/45" />
+//           <div className="absolute inset-0 bg-[#061f20]/45" />
 
-          <h3 className="absolute left-9 top-9 max-w-[380px] text-[48px] font-normal leading-[1.08] tracking-[-0.055em] text-white">
-            {aboutPage.reviewBadgeTitle}
-          </h3>
+//           <h3 className="absolute left-9 top-9 max-w-[380px] text-[48px] font-normal leading-[1.08] tracking-[-0.055em] text-white">
+//             {aboutPage.reviewBadgeTitle}
+//           </h3>
 
-          <div className="absolute bottom-0 right-0 w-[170px] bg-[#188b88] p-7 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
-            <h4 className="mb-5 text-[58px] font-normal leading-none tracking-[-0.06em]">
-              {aboutPage.reviewRating}
-            </h4>
+//           <div className="absolute bottom-0 right-0 w-[170px] bg-[#188b88] p-7 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]">
+//             <h4 className="mb-5 text-[58px] font-normal leading-none tracking-[-0.06em]">
+//               {aboutPage.reviewRating}
+//             </h4>
 
-            <div className="mb-3 flex gap-1">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="h-4 w-4 fill-current" />
-              ))}
-            </div>
+//             <div className="mb-3 flex gap-1">
+//               {[1, 2, 3, 4, 5].map((star) => (
+//                 <Star key={star} className="h-4 w-4 fill-current" />
+//               ))}
+//             </div>
 
-            <p className="text-[11px] font-bold">{aboutPage.reviewCount}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+//             <p className="text-[11px] font-bold">{aboutPage.reviewCount}</p>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
-function TeamSection() {
-  const { aboutPage } = content;
+// function TeamSection() {
+//   const { aboutPage } = content;
 
-  return (
-    <section className="about-section relative overflow-hidden bg-[#dfe9e9] px-4 py-24 dark:bg-[#081d1b] sm:px-6 lg:px-12 xl:px-20">
-      <PatternBackground />
+//   return (
+//     <section className="about-section relative overflow-hidden bg-[#dfe9e9] px-4 py-24 dark:bg-[#081d1b] sm:px-6 lg:px-12 xl:px-20">
+//       <PatternBackground />
 
-      <div className="relative z-10 mx-auto max-w-[1320px]">
-        <div className="mb-14 text-center">
-          <div className="about-reveal mb-6">
-            <SectionBadge>{aboutPage.teamBadge}</SectionBadge>
-          </div>
+//       <div className="relative z-10 mx-auto max-w-[1320px]">
+//         <div className="mb-14 text-center">
+//           <div className="about-reveal mb-6">
+//             <SectionBadge>{aboutPage.teamBadge}</SectionBadge>
+//           </div>
 
-          <h2 className="about-reveal text-[44px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[56px] lg:text-[64px]">
-            {aboutPage.teamHeading1}{' '}
-            <span className="text-[#188b88] dark:text-[#4ecdc4]">
-              {aboutPage.teamHighlight}
-            </span>{' '}
-            {aboutPage.teamHeading2}
-            <br />
-            {aboutPage.teamHeading3}
-          </h2>
-        </div>
+//           <h2 className="about-reveal text-[44px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[56px] lg:text-[64px]">
+//             {aboutPage.teamHeading1}{' '}
+//             <span className="text-[#188b88] dark:text-[#4ecdc4]">{aboutPage.teamHighlight}</span>{' '}
+//             {aboutPage.teamHeading2}
+//             <br />
+//             {aboutPage.teamHeading3}
+//           </h2>
+//         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {aboutPage.teamMembers.map((member: any) => (
-            <TeamCard key={member.name} member={member} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+//           {aboutPage.teamMembers.map((member: any) => (
+//             <TeamCard key={member.name} member={member} />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
-function AboutFAQSection() {
-  const { aboutPage } = content;
-  const [openIndex, setOpenIndex] = useState(0);
+// function AboutFAQSection() {
+//   const { aboutPage } = content;
+//   const [openIndex, setOpenIndex] = useState(0);
 
-  return (
-    <section className="about-section px-4 py-24 sm:px-6 lg:px-12 xl:px-20">
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="about-reveal">
-          <SectionBadge>{aboutPage.faqBadge}</SectionBadge>
+//   return (
+//     <section className="about-section px-4 py-24 sm:px-6 lg:px-12 xl:px-20">
+//       <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+//         <div className="about-reveal">
+//           <SectionBadge>{aboutPage.faqBadge}</SectionBadge>
 
-          <h2 className="mt-7 max-w-[460px] text-[48px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[60px]">
-            {aboutPage.faqHeading}
-          </h2>
+//           <h2 className="mt-7 max-w-[460px] text-[48px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[60px]">
+//             {aboutPage.faqHeading}
+//           </h2>
 
-          <p className="mt-7 max-w-[380px] text-[16px] font-medium leading-[1.6] text-[#536363] dark:text-[#9daaaa]">
-            {aboutPage.faqDescription}
-          </p>
+//           <p className="mt-7 max-w-[380px] text-[16px] font-medium leading-[1.6] text-[#536363] dark:text-[#9daaaa]">
+//             {aboutPage.faqDescription}
+//           </p>
 
-          <div className="mt-9">
-            <PillButton to="/contact">{aboutPage.faqCta}</PillButton>
-          </div>
-        </div>
+//           <div className="mt-9">
+//             <PillButton to="/contact">{aboutPage.faqCta}</PillButton>
+//           </div>
+//         </div>
 
-        <div className="about-reveal space-y-5">
-          {aboutPage.faqs.map((faq: any, index: number) => {
-            const isOpen = openIndex === index;
+//         <div className="about-reveal space-y-5">
+//           {aboutPage.faqs.map((faq: any, index: number) => {
+//             const isOpen = openIndex === index;
 
-            return (
-              <div
-                key={faq.question}
-                className="overflow-hidden rounded-[7px] bg-white dark:bg-[#0f1f1d]"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between gap-6 px-8 py-7 text-left"
-                >
-                  <span className="text-[18px] font-bold tracking-[-0.03em] text-[#071515] dark:text-white">
-                    {faq.question}
-                  </span>
+//             return (
+//               <div
+//                 key={faq.question}
+//                 className="overflow-hidden rounded-[7px] bg-white dark:bg-[#0f1f1d]"
+//               >
+//                 <button
+//                   type="button"
+//                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
+//                   className="flex w-full items-center justify-between gap-6 px-8 py-7 text-left"
+//                 >
+//                   <span className="text-[18px] font-bold tracking-[-0.03em] text-[#071515] dark:text-white">
+//                     {faq.question}
+//                   </span>
 
-                  <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[#188b88] text-[#188b88] dark:border-[#4ecdc4] dark:text-[#4ecdc4]">
-                    {isOpen ? (
-                      <Minus className="h-5 w-5" />
-                    ) : (
-                      <Plus className="h-5 w-5" />
-                    )}
-                  </span>
-                </button>
+//                   <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[#188b88] text-[#188b88] dark:border-[#4ecdc4] dark:text-[#4ecdc4]">
+//                     {isOpen ? <Minus className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
+//                   </span>
+//                 </button>
 
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[220px]' : 'max-h-0'
-                    }`}
-                >
-                  <div className="px-8 pb-8">
-                    <p className="border-t border-[#d8e0e0] pt-6 text-[16px] font-medium leading-[1.6] text-[#536363] dark:border-[#2a3f3d] dark:text-[#9daaaa]">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
+//                 <div
+//                   className={`overflow-hidden transition-all duration-300 ${
+//                     isOpen ? 'max-h-[220px]' : 'max-h-0'
+//                   }`}
+//                 >
+//                   <div className="px-8 pb-8">
+//                     <p className="border-t border-[#d8e0e0] pt-6 text-[16px] font-medium leading-[1.6] text-[#536363] dark:border-[#2a3f3d] dark:text-[#9daaaa]">
+//                       {faq.answer}
+//                     </p>
+//                   </div>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 export default function AboutUs() {
   const pageRef = useRef<HTMLElement>(null);
@@ -686,17 +660,17 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <main
-      ref={pageRef}
-      className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]"
-    >
-      <AboutHero />
-      <ChooseBestSection />
-      <MissionVisionSection />
-      <LogoMarqueeSection />
+    <>
+      <PageTitle title="About Us" description="Welcome to Updeck - Your trusted partner" />
+      <main ref={pageRef} className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]">
+        <AboutHero />
+        <ChooseBestSection />
+        <MissionVisionSection />
+        {/* <LogoMarqueeSection />
       <CustomerReviewSection />
       <TeamSection />
-      <AboutFAQSection />
-    </main>
+      <AboutFAQSection /> */}
+      </main>
+    </>
   );
 }

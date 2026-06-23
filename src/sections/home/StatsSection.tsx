@@ -1,10 +1,10 @@
 // src/components/StatsSection.tsx
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { content } from '@/data/content';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Box, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { content } from '@/data/content';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,19 +76,12 @@ function AnimatedStat({ value, label, suffix = '' }: StatItemProps) {
   );
 }
 
-function TestimonialCard({
-  item,
-  active,
-}: {
-  item: TestimonialItem;
-  active?: boolean;
-}) {
+function TestimonialCard({ item, active }: { item: TestimonialItem; active?: boolean }) {
   return (
     <div
-      className={`flex min-h-[390px] flex-col rounded-[8px] bg-white px-8 py-10 transition-all duration-300 dark:bg-[#0f1f1d] xl:min-h-[420px] ${active
-        ? 'border border-[#188b88] dark:border-[#4ecdc4]'
-        : 'border border-transparent'
-        }`}
+      className={`flex min-h-[390px] flex-col rounded-[8px] bg-white px-8 py-10 transition-all duration-300 dark:bg-[#0f1f1d] xl:min-h-[420px] ${
+        active ? 'border border-[#188b88] dark:border-[#4ecdc4]' : 'border border-transparent'
+      }`}
     >
       <Quote
         className="mb-8 h-16 w-16 rotate-180 text-[#188b88] dark:text-[#4ecdc4]"
@@ -102,11 +95,7 @@ function TestimonialCard({
 
       <div className="mt-auto border-t border-dashed border-[#cfdada] pt-7 dark:border-[#2a3f3d]">
         <div className="flex items-center gap-4">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="h-12 w-12 rounded-full object-cover"
-          />
+          <img src={item.image} alt={item.name} className="h-12 w-12 rounded-full object-cover" />
 
           <div>
             <h3 className="text-[22px] font-bold leading-none tracking-[-0.04em] text-[#071515] dark:text-white">
@@ -242,14 +231,10 @@ export default function StatsSection() {
           ref={statsBoxRef}
           className="w-full rounded-[8px] bg-[#188b88] px-8 py-12 opacity-0 dark:bg-[#4ecdc4] sm:px-12 lg:px-16 xl:px-20"
         >
-          <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4 lg:gap-y-0">
+          <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-3 lg:gap-y-0">
             {statsSection.stats.map((stat, index) => (
               <div key={index} className="relative">
-                <AnimatedStat
-                  value={stat.value}
-                  label={stat.label}
-                  suffix={stat.suffix}
-                />
+                <AnimatedStat value={stat.value} label={stat.label} suffix={stat.suffix} />
 
                 {index !== statsSection.stats.length - 1 && (
                   <div className="absolute right-0 top-1/2 hidden h-[88px] w-px -translate-y-1/2 border-r border-dashed border-white/28 lg:block" />
@@ -340,10 +325,11 @@ export default function StatsSection() {
                 type="button"
                 onClick={() => handleDotClick(index)}
                 aria-label={`Go to testimonial ${index + 1}`}
-                className={`h-1 rounded-full transition-all duration-300 ${activeIndex === index
-                  ? 'w-12 bg-[#188b88] dark:bg-[#4ecdc4]'
-                  : 'w-3 bg-[#b9d2d2] dark:bg-[#28413f]'
-                  }`}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  activeIndex === index
+                    ? 'w-12 bg-[#188b88] dark:bg-[#4ecdc4]'
+                    : 'w-3 bg-[#b9d2d2] dark:bg-[#28413f]'
+                }`}
               />
             ))}
           </div>

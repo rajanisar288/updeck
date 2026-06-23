@@ -1,22 +1,22 @@
-import { Routes, Route } from 'react-router-dom';
 import Layout from '@/components/shared/Layout';
-import Home from '@/pages/Home';
 import AboutUs from '@/pages/AboutUs';
-import Services from '@/pages/Services';
-import FAQ from '@/pages/FAQ';
 import Contact from '@/pages/Contact';
-import ScrollToTop from './sections/scrollTop';
-import Portfolio from './pages/portfolio';
+import FAQ from '@/pages/FAQ';
+import Home from '@/pages/Home';
+import Services from '@/pages/Services';
+import { Route, Routes } from 'react-router-dom';
+import PageLoader from './components/shared/PageLoader';
 import BusinessImpact from './pages/BusinessImpact';
 import CaseStudyView from './pages/CaseStudyView';
-import PageLoader from './components/shared/PageLoader';
-import CustomCursor from './components/shared/CustomCursor';
+import Portfolio from './pages/portfolio';
+import ScrollToTop from './sections/scrollTop';
+// import CustomCursor from './components/shared/CustomCursor';
 
 export default function App() {
   return (
     <Layout>
       <PageLoader />
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <ScrollToTop />
 
       <Routes>

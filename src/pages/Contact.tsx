@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import PageTitle from '@/components/shared/PageTitle';
+import { content } from '@/data/content';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,11 +11,12 @@ import {
   Home,
   Mail,
   MapPin,
-  MessageCircle,
   Minus,
   Phone,
   Plus,
 } from 'lucide-react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,30 +31,30 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Our Location',
-    lines: ['993 Renner Burg, West Rond,', 'MT 94251-030'],
+    lines: ['1001 S Main St STE 500,', 'Kalispell MT 59901'],
   },
   {
     icon: Mail,
     title: 'Email us',
-    lines: ['support@Updeck.com', 'info@Updeck.com'],
+    lines: ['support@Updeck.com'],
     isLink: true,
     prefix: 'mailto:',
   },
   {
     icon: Phone,
     title: 'Call us',
-    lines: ['+1 (009) 544-7818', '+1 (009) 880-1810'],
+    lines: ['+1 (009) 544-7818'],
     isLink: true,
     prefix: 'tel:',
   },
-  {
-    icon: MessageCircle,
-    title: 'Live chat',
-    lines: ['livechat@Updeck.com'],
-    extra: 'Need help?',
-    isLink: true,
-    prefix: 'mailto:',
-  },
+  // {
+  //   icon: MessageCircle,
+  //   title: 'Live chat',
+  //   lines: ['livechat@Updeck.com'],
+  //   extra: 'Need help?',
+  //   isLink: true,
+  //   prefix: 'mailto:',
+  // },
 ];
 
 const services = [
@@ -65,53 +66,21 @@ const services = [
   'Marketing Strategy',
 ];
 
-const faqs = [
-  {
-    question: 'What services does Updeck offer to clients?',
-    answer:
-      'Getting started is easy! Simply reach out to us through our contact form or give us a call, and we’ll schedule a consultation to discuss your project and how we can best assist you. Our team keeps you informed throughout the process, ensuring quality control and timely delivery.',
-  },
-  {
-    question: 'How do I get started with Corporate Business?',
-    answer:
-      'Reach out through our contact form or request a call. We will understand your goals, review your business needs, and suggest the right plan.',
-  },
-  {
-    question: 'How do you ensure the success of a project?',
-    answer:
-      'We use clear milestones, regular updates, transparent communication, and quality checks to keep every project moving in the right direction.',
-  },
-  {
-    question: 'How long will it take to complete my project?',
-    answer:
-      'Project timelines depend on scope and complexity. After the first consultation, we provide clear delivery milestones and estimated completion time.',
-  },
-  {
-    question: 'Can I track the progress of my project?',
-    answer:
-      'Yes. We keep you updated with regular progress reviews, milestone tracking, and clear communication throughout the project.',
-  },
-];
-
-function SectionBadge({
-  children,
-  dark = false,
-}: {
-  children: ReactNode;
-  dark?: boolean;
-}) {
+function SectionBadge({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-[2px] border border-dashed px-4 py-2 ${dark
-        ? 'border-white/15 text-white'
-        : 'border-[#c3cece] text-[#071515] dark:border-[#2a3f3d] dark:text-white'
-        }`}
+      className={`inline-flex items-center gap-2 rounded-[2px] border border-dashed px-4 py-2 ${
+        dark
+          ? 'border-white/15 text-white'
+          : 'border-[#c3cece] text-[#071515] dark:border-[#2a3f3d] dark:text-white'
+      }`}
     >
       <Box
-        className={`h-4 w-4 ${dark
-          ? 'fill-[#4ecdc4] text-[#4ecdc4]'
-          : 'fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]'
-          }`}
+        className={`h-4 w-4 ${
+          dark
+            ? 'fill-[#4ecdc4] text-[#4ecdc4]'
+            : 'fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]'
+        }`}
       />
 
       <span className="text-[13px] font-bold uppercase leading-none tracking-[0.2em]">
@@ -120,8 +89,6 @@ function SectionBadge({
     </div>
   );
 }
-
-
 
 function ContactHero() {
   return (
@@ -158,10 +125,7 @@ function ContactHero() {
           >
             <Home className="h-4 w-4 fill-[#188b88] text-[#188b88] dark:fill-[#4ecdc4] dark:text-[#4ecdc4]" />
 
-            <Link
-              to="/"
-              className="transition-colors duration-300 hover:text-[#4ecdc4]"
-            >
+            <Link to="/" className="transition-colors duration-300 hover:text-[#4ecdc4]">
               Home
             </Link>
 
@@ -185,12 +149,11 @@ function ContactInfoSection() {
           </div>
 
           <h2 className="text-[46px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[58px] lg:text-[64px]">
-            <span className="text-[#188b88] dark:text-[#4ecdc4]">Reach</span>{' '}
-            Out to Us
+            <span className="text-[#188b88] dark:text-[#4ecdc4]">Reach</span> Out to Us
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {contactInfo.map((info) => {
             const Icon = info.icon;
 
@@ -227,14 +190,14 @@ function ContactInfoSection() {
                   ))}
                 </div>
 
-                {info.extra && (
+                {/* {info?.extra  && (
                   <Link
                     to="/contact"
                     className="mt-2 text-[17px] font-bold leading-none tracking-[-0.03em] text-[#188b88] transition-colors duration-300 hover:text-[#071515] dark:text-[#4ecdc4] dark:hover:text-white"
                   >
                     {info.extra}
                   </Link>
-                )}
+                )} */}
               </div>
             );
           })}
@@ -244,7 +207,7 @@ function ContactInfoSection() {
   );
 }
 
-function ContactFormMapSection() {
+function ContactFormSection() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -273,7 +236,7 @@ function ContactFormMapSection() {
 
   return (
     <section className="contact-section px-4 pb-28 pt-8 sm:px-6 lg:px-12 xl:px-20">
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-6 lg:grid-cols-[0.86fr_1.14fr]">
+      <div className="mx-auto max-w-[1320px]">
         <form
           onSubmit={handleSubmit}
           className="contact-reveal rounded-[8px] bg-white p-8 dark:bg-[#0f1f1d] sm:p-10 lg:p-12"
@@ -288,9 +251,7 @@ function ContactFormMapSection() {
               placeholder="Full name *"
               required
               value={formData.fullName}
-              onChange={(e) =>
-                setFormData({ ...formData, fullName: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               className="h-[42px] w-full border-0 border-b border-dashed border-[#c8d4d4] bg-transparent px-0 pb-3 text-[15px] font-medium text-[#071515] outline-none placeholder:text-[#657171] focus:border-[#188b88] dark:border-[#2a3f3d] dark:text-white dark:placeholder:text-[#9daaaa]"
             />
 
@@ -299,9 +260,7 @@ function ContactFormMapSection() {
               placeholder="Email address *"
               required
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="h-[42px] w-full border-0 border-b border-dashed border-[#c8d4d4] bg-transparent px-0 pb-3 text-[15px] font-medium text-[#071515] outline-none placeholder:text-[#657171] focus:border-[#188b88] dark:border-[#2a3f3d] dark:text-white dark:placeholder:text-[#9daaaa]"
             />
 
@@ -310,9 +269,7 @@ function ContactFormMapSection() {
               placeholder="Phone number *"
               required
               value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="h-[42px] w-full border-0 border-b border-dashed border-[#c8d4d4] bg-transparent px-0 pb-3 text-[15px] font-medium text-[#071515] outline-none placeholder:text-[#657171] focus:border-[#188b88] dark:border-[#2a3f3d] dark:text-white dark:placeholder:text-[#9daaaa]"
             />
 
@@ -333,8 +290,7 @@ function ContactFormMapSection() {
                 </span>
 
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''
-                    }`}
+                  className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
                 />
               </button>
 
@@ -363,9 +319,7 @@ function ContactFormMapSection() {
             required
             rows={4}
             value={formData.message}
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="mt-7 h-[118px] w-full resize-none border-0 border-b border-dashed border-[#c8d4d4] bg-transparent px-0 pb-3 text-[15px] font-medium text-[#071515] outline-none placeholder:text-[#657171] focus:border-[#188b88] dark:border-[#2a3f3d] dark:text-white dark:placeholder:text-[#9daaaa]"
           />
 
@@ -374,23 +328,11 @@ function ContactFormMapSection() {
             className="group mt-8 inline-flex h-[48px] items-center rounded-full bg-[#188b88] pl-6 pr-1.5 text-[15px] font-bold text-white transition-colors duration-300 hover:bg-[#157a76] dark:bg-[#4ecdc4] dark:text-[#0a1a18]"
           >
             Send Message
-
             <span className="ml-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#071515] text-white transition-transform duration-300 group-hover:rotate-45 dark:bg-[#0a1a18]">
               <ArrowUpRight className="h-4 w-4" />
             </span>
           </button>
         </form>
-
-        <div className="contact-reveal min-h-[520px] overflow-hidden rounded-[8px] bg-white dark:bg-[#0f1f1d]">
-          <iframe
-            title="London Eye Map"
-            src="https://www.google.com/maps?q=London%20Eye,%20London&output=embed"
-            className="h-full min-h-[520px] w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-        </div>
       </div>
     </section>
   );
@@ -398,12 +340,45 @@ function ContactFormMapSection() {
 
 function FAQImageAccordionSection() {
   const [openIndex, setOpenIndex] = useState(0);
+  const { faqSection } = content;
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const faqContainerRef = useRef<HTMLDivElement>(null);
+
+  // Calculate and sync heights
+  useEffect(() => {
+    const updateHeight = () => {
+      if (faqContainerRef.current && imageContainerRef.current) {
+        const faqHeight = faqContainerRef.current.scrollHeight;
+        imageContainerRef.current.style.height = `${faqHeight}px`;
+      }
+    };
+
+    // Update height when accordion changes
+    updateHeight();
+
+    // Add resize observer for dynamic changes
+    const resizeObserver = new ResizeObserver(() => {
+      updateHeight();
+    });
+
+    if (faqContainerRef.current) {
+      resizeObserver.observe(faqContainerRef.current);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [openIndex]);
 
   return (
     <section className="contact-section px-4 py-24 sm:px-6 lg:px-12 xl:px-20">
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="contact-reveal relative min-h-[560px] lg:min-h-[620px]">
-          <div className="absolute inset-0 overflow-hidden rounded-[8px]">
+      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        {/* Image Container with dynamic height */}
+        <div
+          ref={imageContainerRef}
+          className="contact-reveal relative overflow-hidden rounded-[8px] transition-all duration-500 ease-in-out min-h-[560px] lg:min-h-[620px]"
+        >
+          <div className="absolute inset-0">
             <img
               src={images.faqImage}
               alt="Need help"
@@ -438,18 +413,20 @@ function FAQImageAccordionSection() {
           </div>
         </div>
 
-        <div className="contact-reveal">
+        {/* FAQ Container */}
+        <div ref={faqContainerRef} className="contact-reveal">
           <div className="w-full space-y-5">
-            {faqs.map((faq, index) => {
+            {faqSection.faqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
                 <div
                   key={faq.question}
-                  className={`overflow-hidden rounded-[7px] transition-colors duration-300 ${isOpen
-                    ? 'bg-[#188b88] text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]'
-                    : 'bg-white dark:bg-[#0f1f1d]'
-                    }`}
+                  className={`overflow-hidden rounded-[7px] transition-colors duration-300 ${
+                    isOpen
+                      ? 'bg-[#188b88] text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18]'
+                      : 'bg-white dark:bg-[#0f1f1d]'
+                  }`}
                 >
                   <button
                     type="button"
@@ -457,19 +434,19 @@ function FAQImageAccordionSection() {
                     className="flex w-full items-center justify-between gap-6 px-8 py-7 text-left"
                   >
                     <span
-                      className={`text-[18px] font-bold leading-[1.3] tracking-[-0.035em] ${isOpen
-                        ? 'text-white dark:text-[#0a1a18]'
-                        : 'text-[#071515] dark:text-white'
-                        }`}
+                      className={`text-[18px] font-bold leading-[1.3] tracking-[-0.035em] ${
+                        isOpen ? 'text-white dark:text-[#0a1a18]' : 'text-[#071515] dark:text-white'
+                      }`}
                     >
                       {faq.question}
                     </span>
 
                     <span
-                      className={`flex h-[34px] w-[34px] flex-shrink-0 items-center justify-center rounded-full border ${isOpen
-                        ? 'border-white/45 text-white dark:border-[#0a1a18]/35 dark:text-[#0a1a18]'
-                        : 'border-[#188b88] text-[#188b88] dark:border-[#4ecdc4] dark:text-[#4ecdc4]'
-                        }`}
+                      className={`flex h-[34px] w-[34px] flex-shrink-0 items-center justify-center rounded-full border transition-transform duration-300 ${
+                        isOpen
+                          ? 'border-white/45 text-white dark:border-[#0a1a18]/35 dark:text-[#0a1a18]'
+                          : 'border-[#188b88] text-[#188b88] dark:border-[#4ecdc4] dark:text-[#4ecdc4]'
+                      }`}
                     >
                       {isOpen ? (
                         <Minus className="h-5 w-5" strokeWidth={2} />
@@ -480,16 +457,18 @@ function FAQImageAccordionSection() {
                   </button>
 
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[260px]' : 'max-h-0'
-                      }`}
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
                   >
                     <div className="px-8 pb-8">
                       <div className="border-t border-white/25 pt-6 dark:border-[#0a1a18]/25">
                         <p
-                          className={`max-w-[650px] text-[16px] font-medium leading-[1.58] tracking-[-0.025em] ${isOpen
-                            ? 'text-white/90 dark:text-[#0a1a18]/85'
-                            : 'text-[#4b5b5b] dark:text-[#9daaaa]'
-                            }`}
+                          className={`max-w-[650px] text-[16px] font-medium leading-[1.58] tracking-[-0.025em] transition-opacity duration-300 ${
+                            isOpen
+                              ? 'text-white/90 dark:text-[#0a1a18]/85'
+                              : 'text-[#4b5b5b] dark:text-[#9daaaa]'
+                          }`}
                         >
                           {faq.answer}
                         </p>
@@ -500,69 +479,6 @@ function FAQImageAccordionSection() {
               );
             })}
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CommonQuestionsSection() {
-  const [openIndex, setOpenIndex] = useState(0);
-
-  return (
-    <section className="contact-section px-4 py-24 sm:px-6 lg:px-12 xl:px-20">
-      <div className="mx-auto max-w-[820px]">
-        <div className="contact-reveal mb-12 text-center">
-          <div className="mb-6 flex justify-center">
-            <SectionBadge>Common Questions</SectionBadge>
-          </div>
-
-          <h2 className="text-[40px] font-normal leading-[1.1] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[50px]">
-            Need <span className="text-[#188b88] dark:text-[#4ecdc4]">Help?</span>{' '}
-            Start Here...
-          </h2>
-        </div>
-
-        <div className="contact-reveal space-y-5">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <div
-                key={faq.question}
-                className="overflow-hidden rounded-[7px] bg-white dark:bg-[#0f1f1d]"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between gap-6 px-8 py-6 text-left"
-                >
-                  <span className="text-[16px] font-bold tracking-[-0.03em] text-[#071515] dark:text-white">
-                    {faq.question}
-                  </span>
-
-                  <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-[#188b88] text-[#188b88] dark:border-[#4ecdc4] dark:text-[#4ecdc4]">
-                    {isOpen ? (
-                      <Minus className="h-5 w-5" />
-                    ) : (
-                      <Plus className="h-5 w-5" />
-                    )}
-                  </span>
-                </button>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[220px]' : 'max-h-0'
-                    }`}
-                >
-                  <div className="px-8 pb-8">
-                    <p className="border-t border-[#d8e0e0] pt-6 text-[15px] font-medium leading-[1.6] text-[#536363] dark:border-[#2a3f3d] dark:text-[#9daaaa]">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>
@@ -601,16 +517,14 @@ export default function Contact() {
   }, []);
 
   return (
-    <main
-      ref={pageRef}
-      className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]"
-    >
-      <ContactHero />
-      <ContactInfoSection />
-
-      <FAQImageAccordionSection />
-      <CommonQuestionsSection />
-      <ContactFormMapSection />
-    </main>
+    <>
+      <PageTitle title="Business Impact" description="Welcome to Updeck - Your trusted partner" />
+      <main ref={pageRef} className="overflow-hidden bg-[var(--color-base)] dark:bg-[#0a1a18]">
+        <ContactHero />
+        <ContactInfoSection />
+        <FAQImageAccordionSection />
+        <ContactFormSection />
+      </main>
+    </>
   );
 }
