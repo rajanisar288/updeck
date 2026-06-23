@@ -1,56 +1,69 @@
 // src/components/SolutionsSection.tsx
 
 import { CASE_STUDIES, content } from '@/data/content';
+import gsap from 'gsap';
 import { ArrowUpRight, Box } from 'lucide-react';
 import { useEffect, useRef } from 'react';
-import type { Swiper as SwiperType } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// const iconMap: Record<string, any> = {
-//   Sparkles,
-//   Plus,
-//   ChevronRight,
-//   Aperture,
-//   Box,
-// };
 
 export default function SolutionsSection() {
   const { solutionsSection } = content;
   const sectionRef = useRef<HTMLElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  // const navRef = useRef<HTMLDivElement>(null);
-  const swiperRef = useRef<SwiperType | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
 
-  // Make sure autoplay is stopped on mount
+  // Triple the items for seamless infinite loop
+  const sliderSolutions = [...CASE_STUDIES, ...CASE_STUDIES, ...CASE_STUDIES];
+
   useEffect(() => {
-    // Stop autoplay immediately when component mounts
-    if (swiperRef.current) {
-      swiperRef.current.autoplay?.stop();
+    const track = trackRef.current;
+    if (!track) return;
+
+    // Calculate total width of one set of original items
+    const cards = track.querySelectorAll('.solution-card-wrapper');
+    if (cards.length === 0) return;
+
+    // Get width of original set (first third of tripled array)
+    const originalCount = CASE_STUDIES.length;
+    let originalWidth = 0;
+    for (let i = 0; i < originalCount; i++) {
+      const card = cards[i] as HTMLElement;
+      originalWidth += card.offsetWidth + 28; // 28px gap
     }
+
+    // Set initial position
+    gsap.set(track, { x: 0 });
+
+    // Create infinite scrolling tween
+    tweenRef.current = gsap.to(track, {
+      x: -originalWidth,
+      duration: 40, // Adjust speed: lower = faster
+      ease: 'none',
+      repeat: -1,
+      modifiers: {
+        x: gsap.utils.unitize((x: number) => parseFloat(String(x)) % originalWidth),
+      },
+    });
+
+    return () => {
+      tweenRef.current?.kill();
+    };
   }, []);
 
-  // Function to stop autoplay immediately
-  const stopAutoplay = () => {
-    if (swiperRef.current) {
-      swiperRef.current.autoplay?.stop();
-      console.log('Autoplay stopped'); // For debugging
+  // Stop immediately on hover
+  const handleMouseEnter = () => {
+    if (tweenRef.current) {
+      tweenRef.current.pause();
     }
   };
 
-  // Function to start autoplay
-  const startAutoplay = () => {
-    if (swiperRef.current) {
-      swiperRef.current.autoplay?.start();
-      console.log('Autoplay started'); // For debugging
+  // Resume immediately on mouse leave
+  const handleMouseLeave = () => {
+    if (tweenRef.current) {
+      tweenRef.current.resume();
     }
   };
-
-  const sliderSolutions = [...CASE_STUDIES, ...CASE_STUDIES, ...CASE_STUDIES];
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-[#061f20] py-20 text-white">
@@ -89,41 +102,20 @@ export default function SolutionsSection() {
           </h2>
         </div>
 
-        {/* Slider */}
-        <div ref={sliderRef} onMouseEnter={stopAutoplay} onMouseLeave={startAutoplay}>
-          <style>
-            {`
-              .solutions-swiper .swiper-wrapper {
-                transition-timing-function: linear !important;
-              }
-            `}
-          </style>
-          <Swiper
-            modules={[Autoplay]}
-            speed={6000}
-            loop={true}
-            loopAdditionalSlides={12}
-            centeredSlides={true}
-            slidesPerView="auto"
-            spaceBetween={28}
-            watchSlidesProgress={true}
-            className="solutions-swiper !overflow-visible !pb-8"
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-              // Stop autoplay immediately when swiper is initialized
-              swiper.autoplay?.stop();
-            }}
-          >
+        {/* Slider - GSAP Marquee */}
+        <div
+          // ref={sliderRef}
+          className="overflow-hidden pb-8"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div ref={trackRef} className="flex w-max gap-7" style={{ willChange: 'transform' }}>
             {sliderSolutions.map((solution, index) => (
-              <SwiperSlide
+              <div
                 key={`${solution.title}-${index}`}
-                className="!h-auto !w-[430px] max-w-[86vw]"
+                className="solution-card-wrapper h-[455px] w-[430px] max-w-[86vw] flex-shrink-0"
               >
-                <div className="solution-card group relative h-[455px] overflow-hidden rounded-[8px] border border-white/[0.03] bg-[#132b2d] transition-all duration-500 hover:border-[#188b88]/35 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+                <div className="group relative h-full overflow-hidden rounded-[8px] border border-white/[0.03] bg-[#132b2d] transition-all duration-500 hover:border-[#188b88]/35 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
                   <img
                     src={solution.image}
                     alt={solution.title}
@@ -155,9 +147,9 @@ export default function SolutionsSection() {
                     </div>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </div>
     </section>

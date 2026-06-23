@@ -338,7 +338,7 @@ function MissionVisionSection() {
           <div className="absolute inset-0 bg-[#061f20]/20" />
 
           {/* Progress Glass Card */}
-          <div className="absolute bottom-8 left-8 w-[360px] rounded-[8px] border border-white/10 bg-[#061f20]/45 p-7 text-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-[18px]">
+          {/* <div className="absolute bottom-8 left-8 w-[360px] rounded-[8px] border border-white/10 bg-[#061f20]/45 p-7 text-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-[18px]">
             <h4 className="mb-6 text-[22px] font-bold leading-none tracking-[-0.04em]">
               {aboutPage.progressTitle}
             </h4>
@@ -372,7 +372,7 @@ function MissionVisionSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Content */}
