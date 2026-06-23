@@ -393,7 +393,7 @@ function FAQImageAccordionSection() {
             Here..
           </h2>
 
-          <div className="absolute bottom-0 right-0 w-[225px] rounded-[8px] bg-[#188b88] p-7 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18] sm:w-[245px]">
+          {/* <div className="absolute bottom-0 right-0 w-[225px] rounded-[8px] bg-[#188b88] p-7 text-white dark:bg-[#4ecdc4] dark:text-[#0a1a18] sm:w-[245px]">
             <h4 className="mb-8 text-[24px] font-bold leading-[1.2] tracking-[-0.04em]">
               Get Started
               <br />
@@ -410,7 +410,7 @@ function FAQImageAccordionSection() {
             >
               1-888-452-1505
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* FAQ Container */}
