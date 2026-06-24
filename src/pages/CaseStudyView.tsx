@@ -106,7 +106,7 @@ export default function CaseStudyView() {
             className="mt-6 inline-flex items-center gap-2 text-[#188b88] hover:underline dark:text-[#4ecdc4]"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Portfolios
+            Back to Portfolio
           </Link>
         </div>
       </main>
@@ -143,7 +143,7 @@ export default function CaseStudyView() {
               </Link>
               <ChevronRight className="h-4 w-4 text-white/45" />
               <Link to="/portfolios" className="transition-colors hover:text-white">
-                Portfolios
+                Portfolio
               </Link>
               <ChevronRight className="h-4 w-4 text-white/45" />
               <span className="text-white">Case Study</span>
