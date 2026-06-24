@@ -117,7 +117,7 @@ function PortfolioHero() {
 
             <ChevronRight className="h-4 w-4 text-white/45" />
 
-            <span className="text-white">Portfolios</span>
+            <span className="text-white">Portfolio</span>
           </motion.div>
         </div>
       </div>
