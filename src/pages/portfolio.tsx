@@ -100,7 +100,7 @@ function PortfolioHero() {
             transition={{ duration: 0.75, ease: 'easeOut' }}
             className="text-[60px] font-normal leading-none tracking-[-0.055em] text-white sm:text-[82px] lg:text-[92px]"
           >
-            Portfolios
+            Portfolio
           </motion.h1>
 
           <motion.div
