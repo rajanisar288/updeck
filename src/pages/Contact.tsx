@@ -36,7 +36,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email us',
-    lines: ['support@Updeck.com'],
+    lines: ['support@updeck.com'],
     isLink: true,
     prefix: 'mailto:',
   },

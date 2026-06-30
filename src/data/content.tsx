@@ -345,7 +345,7 @@ technology can create meaningful leverage across an organization.`,
     ctaLink: '/contact',
     ctaImage: '/images/cta-collaboration.jpg',
     ctaImageAlt: 'Collaboration',
-    email: 'info@Updeck.com',
+    email: 'info@updeck.com',
     copyright: '© 2026 Updeck All right reserved',
     socialLinks: [
       {
