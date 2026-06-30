@@ -307,7 +307,7 @@ function CaseStudiesSection() {
           </div>
 
           <h2 className="case-study-reveal text-[44px] font-normal leading-[1.08] tracking-[-0.055em] text-[#071515] dark:text-white sm:text-[56px] lg:text-[64px]">
-            Discover Our <span className="text-[#188b88] dark:text-[#4ecdc4]">Project</span>
+            Discover Our <span className="text-[#188b88] dark:text-[#4ecdc4]">Projects</span>
           </h2>
         </div>
 
