@@ -1,5 +1,3 @@
-// src/components/ContactFormSection.tsx
-
 import SectionLabel from '@/components/shared/SectionLabel';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -286,7 +284,6 @@ export default function ContactFormSection() {
                 className="group mt-8 inline-flex h-[52px] items-center rounded-full bg-[#188b88] pl-6 pr-1.5 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#157a76]"
               >
                 Send Message
-
                 <span className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#071515] text-white transition-transform duration-300 group-hover:rotate-45">
                   <ArrowUpRight className="h-4 w-4" />
                 </span>

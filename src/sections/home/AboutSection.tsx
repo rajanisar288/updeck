@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutSection() {
   const { aboutSection } = content;
-
   const sectionRef = useRef<HTMLElement>(null);
   const leftImageRef = useRef<HTMLDivElement>(null);
   const rightTopRef = useRef<HTMLDivElement>(null);
@@ -170,7 +169,6 @@ export default function AboutSection() {
               alt={aboutSection.imageAlt}
               className="h-full w-full object-cover object-center"
             />
-
             <div className="absolute inset-0 bg-[#061f20]/20 dark:bg-[#0a1f1d]/30" />
           </div>
 
