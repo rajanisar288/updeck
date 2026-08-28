@@ -115,44 +115,44 @@ export default function ContactFormSection() {
                   {/* Transfers */}
                   <div className="border-b border-r border-dashed border-white/[0.10] px-6 py-6 xl:px-7 xl:py-7">
                     <div className="font-mono text-[30px] font-semibold leading-none tracking-[-0.05em] text-white xl:text-[34px]">
-                      2000+
+                      25+
                     </div>
 
                     <p className="mt-3 text-[13px] font-semibold leading-[1.4] tracking-[-0.02em] text-[#4ecdc4] xl:text-[14px]">
-                      Transfers
+                      Projects Delivered
                     </p>
                   </div>
 
                   {/* Satisfied Customers */}
                   <div className="border-b border-dashed border-white/[0.10] px-6 py-6 xl:px-7 xl:py-7">
                     <div className="font-mono text-[30px] font-semibold leading-none tracking-[-0.05em] text-white xl:text-[34px]">
-                      1000+
+                      9+
                     </div>
 
                     <p className="mt-3 text-[13px] font-semibold leading-[1.4] tracking-[-0.02em] text-[#4ecdc4] xl:text-[14px]">
-                      Satisfied Customers
+                    Businesses Supported
                     </p>
                   </div>
 
                   {/* Employees */}
                   <div className="border-r border-dashed border-white/[0.10] px-6 py-6 xl:px-7 xl:py-7">
                     <div className="font-mono text-[30px] font-semibold leading-none tracking-[-0.05em] text-white xl:text-[34px]">
-                      20+
+                      12+
                     </div>
 
                     <p className="mt-3 text-[13px] font-semibold leading-[1.4] tracking-[-0.02em] text-[#4ecdc4] xl:text-[14px]">
-                      Employees
+                     Industries
                     </p>
                   </div>
 
                   {/* Contributors */}
                   <div className="px-6 py-6 xl:px-7 xl:py-7">
                     <div className="font-mono text-[30px] font-semibold leading-none tracking-[-0.05em] text-white xl:text-[34px]">
-                      100+
+                      5+
                     </div>
 
                     <p className="mt-3 text-[13px] font-semibold leading-[1.4] tracking-[-0.02em] text-[#4ecdc4] xl:text-[14px]">
-                      Contributors
+                      Markets
                     </p>
                   </div>
                 </div>
