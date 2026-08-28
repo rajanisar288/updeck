@@ -66,7 +66,7 @@ export default function Navbar() {
     src={
       theme === 'dark'
         ? '/images/logo/logo-changed.png'
-        : '/images/logo1.png'
+        : '/images/logo/logo-white-changed.png'
     }
     alt="UPDECK"
     className="
