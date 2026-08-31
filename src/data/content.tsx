@@ -372,183 +372,339 @@ footerSection: {
 
   copyright: '© 2026 Updeck All right reserved',
 
-  socialLinks: [
+socialLinks: [
+  {
+    name: 'Facebook',
+    icon: 'Facebook',
+    url: 'https://www.facebook.com/profile.php?id=61589613189421',
+  },
+  {
+    name: 'Instagram',
+    icon: 'Instagram',
+    url: 'https://www.instagram.com/updeck_technologies/',
+  },
+  {
+    name: 'Linkedin',
+    icon: 'Linkedin',
+    url: 'https://www.linkedin.com/company/updeckofficial/',
+  },
+  {
+    name: 'TikTok',
+    icon: 'TikTok',
+    url: '#', // replace with your TikTok URL
+  },
+],
+},
+// Replace ONLY your existing `aboutPage` block inside content.ts with this.
+// Keep the rest of content.ts unchanged.
+
+aboutPage: {
+  heroTitle: 'About Us',
+  breadcrumbText: 'About Us',
+  heroImage:
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80',
+
+  chooseBestBadge: 'Choose the Best',
+  chooseBestHeading: 'We Think Like Operators Then We Build Like',
+  chooseBestHeadingLine1: 'We Think Like Operators',
+  chooseBestHeadingLine2: 'Then We Build Like',
+  chooseBestHighlight: 'Technologists',
+  chooseBestCta: 'Request a Call',
+
+  featureCards: [
     {
-      name: 'Facebook',
-      icon: 'Facebook',
-      url: 'https://www.facebook.com/profile.php?id=61589613189421',
+      icon: Lightbulb,
+      title: 'WHY WE EXIST',
+      text: `Most Technology Decisions Are Business Decisions in Disguise.
+
+A company may think it needs a new platform.
+The real issue might be customer drop-off.
+
+It may ask for automation.
+The real issue might be an inefficient process.
+
+It may request a dashboard.
+The deeper issue might be that management cannot see what is happening soon enough to act.
+
+This distinction matters.
+
+Updeck exists to connect the visible technology requirement with the underlying commercial reality.
+
+That requires people who can examine a business from several angles at once: customers, operations, economics, workflows, data and technology.
+
+That combination is what defines us.`,
     },
     {
-      name: 'Instagram',
-      icon: 'Instagram',
-      url: 'https://www.instagram.com/updeck_technologies/',
+      icon: Trophy,
+      title: 'THE IDEA BEHIND UPDECK',
+      text: `Updeck combines two ideas.
+
+UP
+“Up” represents advancement.
+
+A stronger business should be able to sell better, operate better, understand itself better and scale with less friction.
+
+Progress can appear in different forms:
+Higher revenue.
+Greater capacity.
+Faster decisions.
+Better customer experiences.
+Improved margins.
+Stronger operational control.
+
+The specific metric may change.
+The direction should not.
+
+DECK
+A deck is where different roles come together to see the wider picture and determine what happens next.
+
+That idea became the foundation of our company.
+
+At Updeck, commercial analysts, strategists, designers, engineers and data specialists do not operate as isolated departments.
+
+They contribute different perspectives to the same business challenge.
+
+One person may understand the economics.
+Another may uncover the process failure.
+Another may see the product opportunity.
+Another may know how to engineer the solution.
+
+The value comes from combining those perspectives before important decisions are made.`,
     },
     {
-      name: 'Linkedin',
-      icon: 'Linkedin',
-      url: 'https://www.linkedin.com/company/updeckofficial/',
+      icon: Headphones,
+      title: 'HOW WE SEE OUR ROLE',
+      text: `Somewhere Between Consultancy and Engineering.
+
+Traditional consulting can diagnose a problem without having the capability to build what comes next.
+
+Traditional development can build exactly what was requested without questioning whether the request addresses the real issue.
+
+Updeck was designed to close that gap.
+
+We combine the ability to examine a commercial challenge with the capability to design, engineer and implement the response.
+
+That creates a different kind of relationship.
+
+Clients can involve us before the technical answer is obvious.
+
+We can examine what is happening, define what should change and then carry the solution forward.`,
+    },
+
+    // Card 4
+    {
+      icon: Shield,
+      title: 'WHAT GUIDES OUR DECISIONS',
+      sections: [
+        {
+          title: 'Commercial Relevance',
+          text:
+            'A technically impressive solution can still be a poor business decision. We prioritize usefulness, economics and impact over complexity.',
+        },
+        {
+          title: 'Context Before Recommendation',
+          text:
+            'There is no responsible solution without context. Industry, customers, workflows, people, constraints and existing systems all influence what should be done.',
+        },
+        {
+          title: 'Evidence Over Assumption',
+          text:
+            'We prefer to investigate what is happening rather than build around what everyone assumes is happening. Good analysis frequently changes the original brief. That is a feature, not a problem.',
+        },
+        {
+          title: 'Appropriate Technology',
+          text:
+            'Newer does not automatically mean better. AI, automation and emerging tools matter when they create an advantage—not because they happen to be fashionable. The right technology is the one appropriate to the problem.',
+        },
+        {
+          title: 'End-to-End Accountability',
+          text:
+            'Insight without execution has limited value. Execution without insight can be expensive. We want responsibility for connecting the two.',
+        },
+      ],
+    },
+
+    // Card 5
+    {
+      icon: Zap,
+      title: 'THE PEOPLE ON THE DECK',
+      subtitle: 'Different Expertise. Shared Context.',
+      sections: [
+        {
+          title: 'Business & Operations',
+          text:
+            'They examine processes, economics, bottlenecks and organizational realities.',
+        },
+        {
+          title: 'Strategy & Product',
+          text:
+            'They turn business opportunities into clear priorities, requirements and product decisions.',
+        },
+        {
+          title: 'Design',
+          text:
+            'They make systems understandable and usable for the people who depend on them.',
+        },
+        {
+          title: 'Engineering',
+          text:
+            'They transform decisions into reliable digital products, applications and infrastructure.',
+        },
+        {
+          title: 'Data & Intelligence',
+          text:
+            'They help businesses use information more effectively and identify where automation or AI can create genuine leverage.',
+        },
+      ],
+      closingText:
+        'No discipline exists simply to hand work to the next. The strongest solutions emerge when each perspective influences the others.',
+    },
+
+    // Card 6
+    {
+      icon: Award,
+      title: 'OUR AMBITION',
+      subtitle: 'To Earn a Seat in the Business Conversation.',
+      paragraphs: [
+        'We do not want Updeck to be contacted only after every important decision has already been made and somebody needs a development team.',
+        'We want to be useful earlier.',
+        'When a company is evaluating an opportunity.',
+        'When an operation is becoming difficult to scale.',
+        'When management knows something should work better but has not yet determined how.',
+        'When new technology creates possibilities but also uncertainty.',
+        'That is where our combination of commercial and technical thinking becomes most valuable.',
+      ],
+    },
+  ],
+
+  missionImage:
+    'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80',
+  progressTitle: 'Business Progress',
+  progressLabel1: 'Business consultants',
+  progressLabel2: 'Client communication',
+
+  missionBadge: 'Get to Know Us',
+  missionHeading: 'THE FOUNDER LENS',
+  missionHighlight: 'Worldwide',
+  missionCardTitle: 'Our Mission',
+  missionCardText:
+    'To unite commercial insight and technical capability so businesses can make better technology decisions and turn those decisions into real operating advantage.',
+  missionPoints: ['Innovation & Excellence', 'Exceptional Customer', 'Business Growth'],
+  visionCardTitle: 'Our Vision',
+  visionCardText:
+    'To make commercially intelligent technology partnership the standard for growing businesses.',
+  visionPoints: ['Global Leadership', 'Transformative Impact', 'Sustainable Success'],
+  missionCta: 'Contact Us',
+
+  logos: ['monceau', 'coudac', 'flomodia', 'Influence4You', 'tse', 'monceau'],
+  marqueeText1: 'Join Over',
+  marqueeHighlight: '1000+',
+  marqueeText2: 'Companies with',
+  marqueeText3: 'Updeck Here',
+
+  reviewImage:
+    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=80',
+  reviewText:
+    "We've been working with Updeck for years, and they continue to deliver outstanding results. Their team is proactive, responsive, and always goes the extra mile to ensure our needs are met.",
+  reviewAuthorName: 'Devon Lane',
+  reviewAuthorRole: 'Co. Founder',
+  reviewAuthorImage:
+    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80',
+  reviewBadgeTitle: 'Hear from Our\nCustomer.',
+  reviewRating: '4.9',
+  reviewCount: '(80+ Clients Reviews)',
+
+  teamBadge: 'Meet Our Team',
+  teamHeading1: 'Success',
+  teamHighlight: 'Stories',
+  teamHeading2: 'Fuel',
+  teamHeading3: 'our Innovation.',
+
+  teamMembers: [
+    {
+      name: 'Eade Marren',
+      role: 'Chief Executive',
+      image:
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80',
+      socialLinks: [
+        { icon: Facebook, url: '#' },
+        { icon: Twitter, url: '#' },
+        { icon: Instagram, url: '#' },
+        { icon: Linkedin, url: '#' },
+      ],
+    },
+    {
+      name: 'Savannah Nguyen',
+      role: 'Operations Head',
+      image:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
+      socialLinks: [
+        { icon: Facebook, url: '#' },
+        { icon: Twitter, url: '#' },
+        { icon: Instagram, url: '#' },
+        { icon: Linkedin, url: '#' },
+      ],
+    },
+    {
+      name: 'Kristin Watson',
+      role: 'Marketing Lead',
+      image:
+        'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80',
+      socialLinks: [
+        { icon: Facebook, url: '#' },
+        { icon: Twitter, url: '#' },
+        { icon: Instagram, url: '#' },
+        { icon: Linkedin, url: '#' },
+      ],
+    },
+    {
+      name: 'Darlene Robertson',
+      role: 'Business Director',
+      image:
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
+      socialLinks: [
+        { icon: Facebook, url: '#' },
+        { icon: Twitter, url: '#' },
+        { icon: Instagram, url: '#' },
+        { icon: Linkedin, url: '#' },
+      ],
+    },
+  ],
+
+  faqBadge: 'Common Questions',
+  faqHeading: 'Need Help? Start Here...',
+  faqDescription:
+    'We stay ahead of curve, leveraging modern technologies and strategies to stay competitive.',
+  faqCta: 'Request a Call',
+  faqs: [
+    {
+      question: 'What services does Updeck offer to clients?',
+      answer:
+        'Getting started is easy! Simply reach out to us through our contact form or give us a call, and we will schedule a consultation to discuss your project and how we can best assist you.',
+    },
+    {
+      question: 'How do I get started with Corporate Business?',
+      answer:
+        'Reach out through our contact form or request a call. We will understand your goals, review your business needs, and suggest the right plan.',
+    },
+    {
+      question: 'How do you ensure the success of a project?',
+      answer:
+        'We use clear milestones, regular updates, transparent communication, and quality checks to keep every project moving in the right direction.',
+    },
+    {
+      question: 'How long will it take to complete my project?',
+      answer:
+        'Project timelines depend on scope and complexity. After the first consultation, we provide clear delivery milestones and estimated completion time.',
+    },
+    {
+      question: 'Can I track the progress of my project?',
+      answer:
+        'Yes. We keep you updated with regular progress reviews, milestone tracking, and clear communication throughout the project.',
     },
   ],
 },
-  aboutPage: {
-    heroTitle: 'About Us',
-    breadcrumbText: 'About Us',
-    heroImage:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80',
 
-    chooseBestBadge: 'Choose the Best',
-    chooseBestHeading: 'Empowering Business with',
-    chooseBestHighlight: 'Expertise',
-    chooseBestCta: 'Request a Call',
-
-    featureCards: [
-      {
-        icon: Lightbulb,
-        title: 'WHO WE ARE',
-        // REPLACED: Updated with client document content
-        text: `Updeck is a strategic technology partner helping businesses operate more intelligently, efficiently, and profitably. We believe technology should be implemented to solve meaningful business challenges, not simply because it is modern. By combining business analysis, product strategy, design, engineering, automation, and data intelligence, we create solutions that improve performance and deliver measurable value.`,
-      },
-      {
-        icon: Trophy,
-        title: 'MISSION',
-        // REPLACED: Updated with client document content
-        text: `To help organizations create measurable competitive advantages through intelligent technology and operational innovation. We focus on enabling businesses to streamline operations, improve decision making, and unlock opportunities for sustainable growth and long term success.`,
-      },
-      {
-        icon: Headphones,
-        title: 'VISION',
-        // REPLACED: Updated with client document content
-        text: `To become the strategic technology layer businesses rely on when growth, efficiency, and transformation become critical priorities. We aspire to build lasting partnerships by delivering solutions that continuously support innovation, adaptability, and business resilience.`,
-      },
-    ],
-
-    missionImage:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80',
-    progressTitle: 'Business Progress',
-    progressLabel1: 'Business consultants',
-    progressLabel2: 'Client communication',
-
-    missionBadge: 'Get to Know Us',
-    missionHeading: 'Driving Innovation and Excellence for Sustainable Corporate Success',
-    missionHighlight: 'Worldwide',
-    missionCardTitle: 'Our Mission',
-    missionCardText:
-      'Our mission is to empower businesses through innovative solutions and exceptional service.',
-    missionPoints: ['Innovation & Excellence', 'Exceptional Customer', 'Business Growth'],
-    visionCardTitle: 'Our Vision',
-    visionCardText:
-      'Our vision is to become a global leader in providing transformative business solutions.',
-    visionPoints: ['Global Leadership', 'Transformative Impact', 'Sustainable Success'],
-    missionCta: 'Contact Us',
-
-    logos: ['monceau', 'coudac', 'flomodia', 'Influence4You', 'tse', 'monceau'],
-    marqueeText1: 'Join Over',
-    marqueeHighlight: '1000+',
-    marqueeText2: 'Companies with',
-    marqueeText3: 'Updeck Here',
-
-    reviewImage:
-      'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=80',
-    reviewText:
-      "We've been working with Updeck for years, and they continue to deliver outstanding results. Their team is proactive, responsive, and always goes the extra mile to ensure our needs are met.",
-    reviewAuthorName: 'Devon Lane',
-    reviewAuthorRole: 'Co. Founder',
-    reviewAuthorImage:
-      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80',
-    reviewBadgeTitle: 'Hear from Our\nCustomer.',
-    reviewRating: '4.9',
-    reviewCount: '(80+ Clients Reviews)',
-
-    teamBadge: 'Meet Our Team',
-    teamHeading1: 'Success',
-    teamHighlight: 'Stories',
-    teamHeading2: 'Fuel',
-    teamHeading3: 'our Innovation.',
-
-    teamMembers: [
-      {
-        name: 'Eade Marren',
-        role: 'Chief Executive',
-        image:
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80',
-        socialLinks: [
-          { icon: Facebook, url: '#' },
-          { icon: Twitter, url: '#' },
-          { icon: Instagram, url: '#' },
-          { icon: Linkedin, url: '#' },
-        ],
-      },
-      {
-        name: 'Savannah Nguyen',
-        role: 'Operations Head',
-        image:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
-        socialLinks: [
-          { icon: Facebook, url: '#' },
-          { icon: Twitter, url: '#' },
-          { icon: Instagram, url: '#' },
-          { icon: Linkedin, url: '#' },
-        ],
-      },
-      {
-        name: 'Kristin Watson',
-        role: 'Marketing Lead',
-        image:
-          'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80',
-        socialLinks: [
-          { icon: Facebook, url: '#' },
-          { icon: Twitter, url: '#' },
-          { icon: Instagram, url: '#' },
-          { icon: Linkedin, url: '#' },
-        ],
-      },
-      {
-        name: 'Darlene Robertson',
-        role: 'Business Director',
-        image:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
-        socialLinks: [
-          { icon: Facebook, url: '#' },
-          { icon: Twitter, url: '#' },
-          { icon: Instagram, url: '#' },
-          { icon: Linkedin, url: '#' },
-        ],
-      },
-    ],
-
-    faqBadge: 'Common Questions',
-    faqHeading: 'Need Help? Start Here...',
-    faqDescription:
-      'We stay ahead of curve, leveraging modern technologies and strategies to stay competitive.',
-    faqCta: 'Request a Call',
-    faqs: [
-      {
-        question: 'What services does Updeck offer to clients?',
-        answer:
-          'Getting started is easy! Simply reach out to us through our contact form or give us a call, and we will schedule a consultation to discuss your project and how we can best assist you.',
-      },
-      {
-        question: 'How do I get started with Corporate Business?',
-        answer:
-          'Reach out through our contact form or request a call. We will understand your goals, review your business needs, and suggest the right plan.',
-      },
-      {
-        question: 'How do you ensure the success of a project?',
-        answer:
-          'We use clear milestones, regular updates, transparent communication, and quality checks to keep every project moving in the right direction.',
-      },
-      {
-        question: 'How long will it take to complete my project?',
-        answer:
-          'Project timelines depend on scope and complexity. After the first consultation, we provide clear delivery milestones and estimated completion time.',
-      },
-      {
-        question: 'Can I track the progress of my project?',
-        answer:
-          'Yes. We keep you updated with regular progress reviews, milestone tracking, and clear communication throughout the project.',
-      },
-    ],
-  },
   servicesPage: {
     heroTitle: 'Services',
     breadcrumbText: 'Services',
