@@ -376,12 +376,12 @@ socialLinks: [
   {
     name: 'Facebook',
     icon: 'Facebook',
-    url: 'https://www.facebook.com/profile.php?id=61589613189421',
+    url: 'https://www.facebook.com/profile.php?id=61590877565248 ',
   },
   {
     name: 'Instagram',
     icon: 'Instagram',
-    url: 'https://www.instagram.com/updeck_technologies/',
+    url: 'https://www.instagram.com/updeck.tech/',
   },
   {
     name: 'Linkedin',
@@ -391,7 +391,7 @@ socialLinks: [
   {
     name: 'TikTok',
     icon: 'TikTok',
-    url: '#', // replace with your TikTok URL
+    url: 'https://www.tiktok.com/@updeck.tech?lang=en-GB', // replace with your TikTok URL
   },
 ],
 },
