@@ -412,28 +412,32 @@ aboutPage: {
   chooseBestCta: 'Request a Call',
 
   featureCards: [
+    // Card 1
     {
       icon: Lightbulb,
       title: 'WHY WE EXIST',
       text: `Most Technology Decisions Are Business Decisions in Disguise.
 
-A company may think it needs a new platform.
-The real issue might be customer drop-off.
-
-It may ask for automation.
-The real issue might be an inefficient process.
-
-It may request a dashboard.
-The deeper issue might be that management cannot see what is happening soon enough to act.
+• A company may think it needs a new platform — the real issue might be customer drop-off.
+• It may ask for automation — the real issue might be an inefficient process.
+• It may request a dashboard — the deeper issue might be that management cannot see what is happening soon enough to act.
 
 This distinction matters.
 
 Updeck exists to connect the visible technology requirement with the underlying commercial reality.
 
-That requires people who can examine a business from several angles at once: customers, operations, economics, workflows, data and technology.
+That requires people who can examine a business from several angles at once:
+• Customers
+• Operations
+• Economics
+• Workflows
+• Data
+• Technology
 
 That combination is what defines us.`,
     },
+
+    // Card 2
     {
       icon: Trophy,
       title: 'THE IDEA BEHIND UPDECK',
@@ -445,12 +449,12 @@ UP
 A stronger business should be able to sell better, operate better, understand itself better and scale with less friction.
 
 Progress can appear in different forms:
-Higher revenue.
-Greater capacity.
-Faster decisions.
-Better customer experiences.
-Improved margins.
-Stronger operational control.
+• Higher revenue
+• Greater capacity
+• Faster decisions
+• Better customer experiences
+• Improved margins
+• Stronger operational control
 
 The specific metric may change.
 The direction should not.
@@ -462,23 +466,23 @@ That idea became the foundation of our company.
 
 At Updeck, commercial analysts, strategists, designers, engineers and data specialists do not operate as isolated departments.
 
-They contribute different perspectives to the same business challenge.
-
-One person may understand the economics.
-Another may uncover the process failure.
-Another may see the product opportunity.
-Another may know how to engineer the solution.
+They contribute different perspectives to the same business challenge:
+• One person may understand the economics.
+• Another may uncover the process failure.
+• Another may see the product opportunity.
+• Another may know how to engineer the solution.
 
 The value comes from combining those perspectives before important decisions are made.`,
     },
+
+    // Card 3
     {
       icon: Headphones,
       title: 'HOW WE SEE OUR ROLE',
       text: `Somewhere Between Consultancy and Engineering.
 
-Traditional consulting can diagnose a problem without having the capability to build what comes next.
-
-Traditional development can build exactly what was requested without questioning whether the request addresses the real issue.
+• Traditional consulting can diagnose a problem without having the capability to build what comes next.
+• Traditional development can build exactly what was requested without questioning whether the request addresses the real issue.
 
 Updeck was designed to close that gap.
 
@@ -486,9 +490,8 @@ We combine the ability to examine a commercial challenge with the capability to 
 
 That creates a different kind of relationship.
 
-Clients can involve us before the technical answer is obvious.
-
-We can examine what is happening, define what should change and then carry the solution forward.`,
+• Clients can involve us before the technical answer is obvious.
+• We can examine what is happening, define what should change and then carry the solution forward.`,
     },
 
     // Card 4
@@ -498,28 +501,28 @@ We can examine what is happening, define what should change and then carry the s
       sections: [
         {
           title: 'Commercial Relevance',
-          text:
-            'A technically impressive solution can still be a poor business decision. We prioritize usefulness, economics and impact over complexity.',
+          text: `• A technically impressive solution can still be a poor business decision.`,
         },
         {
           title: 'Context Before Recommendation',
-          text:
-            'There is no responsible solution without context. Industry, customers, workflows, people, constraints and existing systems all influence what should be done.',
+          text: `• There is no responsible solution without context.`,
         },
         {
           title: 'Evidence Over Assumption',
-          text:
-            'We prefer to investigate what is happening rather than build around what everyone assumes is happening. Good analysis frequently changes the original brief. That is a feature, not a problem.',
+          text: `• We prefer to investigate what is happening rather than build around what everyone assumes is happening.
+`,
         },
         {
           title: 'Appropriate Technology',
-          text:
-            'Newer does not automatically mean better. AI, automation and emerging tools matter when they create an advantage—not because they happen to be fashionable. The right technology is the one appropriate to the problem.',
+          text: `
+• AI, automation and emerging tools matter when they create an advantage, not because they happen to be fashionable.
+`,
         },
         {
           title: 'End-to-End Accountability',
-          text:
-            'Insight without execution has limited value. Execution without insight can be expensive. We want responsibility for connecting the two.',
+          text: `• Insight without execution has limited values.
+
+`,
         },
       ],
     },
@@ -533,27 +536,27 @@ We can examine what is happening, define what should change and then carry the s
         {
           title: 'Business & Operations',
           text:
-            'They examine processes, economics, bottlenecks and organizational realities.',
+            '• They examine processes, economics, bottlenecks and organizational realities.',
         },
         {
           title: 'Strategy & Product',
           text:
-            'They turn business opportunities into clear priorities, requirements and product decisions.',
+            '• They turn business opportunities into clear priorities, requirements and product decisions.',
         },
         {
           title: 'Design',
           text:
-            'They make systems understandable and usable for the people who depend on them.',
+            '• They make systems understandable and usable for the people who depend on them.',
         },
         {
           title: 'Engineering',
           text:
-            'They transform decisions into reliable digital products, applications and infrastructure.',
+            '• They transform decisions into reliable digital products, applications and infrastructure.',
         },
         {
           title: 'Data & Intelligence',
           text:
-            'They help businesses use information more effectively and identify where automation or AI can create genuine leverage.',
+            '• They help businesses use information more effectively and identify where automation or AI can create genuine leverage.',
         },
       ],
       closingText:
@@ -567,11 +570,11 @@ We can examine what is happening, define what should change and then carry the s
       subtitle: 'To Earn a Seat in the Business Conversation.',
       paragraphs: [
         'We do not want Updeck to be contacted only after every important decision has already been made and somebody needs a development team.',
-        'We want to be useful earlier.',
-        'When a company is evaluating an opportunity.',
-        'When an operation is becoming difficult to scale.',
-        'When management knows something should work better but has not yet determined how.',
-        'When new technology creates possibilities but also uncertainty.',
+        'We want to be useful earlier:',
+        '• When a company is evaluating an opportunity.',
+        '• When an operation is becoming difficult to scale.',
+        '• When management knows something should work better but has not yet determined how.',
+        '• When new technology creates possibilities but also uncertainty.',
         'That is where our combination of commercial and technical thinking becomes most valuable.',
       ],
     },
